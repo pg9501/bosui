@@ -1,8 +1,0 @@
-{
-  "OPTIMIZATION_NAV": "Optimization",
-    "OPTIMIZATION_GOALS": {
-        "OPTIMIZATION_GOALS_NAV": "Optimization Goals",
-      "TIP": "Please set weights for the following optimization goals",
-      "SAVE":"Save"
-    }
-}
