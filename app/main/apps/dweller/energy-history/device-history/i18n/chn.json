@@ -1,0 +1,30 @@
+{
+  "ENERGY_HISTORY_NAV": "能源历史",
+  "DEVICE_HISTORY": {
+    "DEVICE_HISTORY_NAV": "设备历史",
+    "YESTERDAY":"昨天",
+    "LAST_THREE_DAYS":"前三天",
+    "LAST_WEEK":"上个周",
+    "LAST_MONTH":"上个月",
+    "SELECT_A_DEVICE":"选择一个设备",
+    "SELECT_A_COMMUNITY":"选择一个社区",
+    "CONSUMPTION":"消耗",
+    "GENERATION":"生成",
+    "DEVICE_ENERGY":"设备能源",
+    "COMMUNITY_AVERAGE_ENERGY":"社区平均电能",
+    "RANKING_IN_THE_COMMUNITY":"社区排名",
+    "COST":"费用",
+    "PROFIT":"收益",
+    "POWER_UPPER_LIMIT":"功率上限",
+    "POWER_LOWER_LIMIT":"功率下限",
+    "POWER_LIMIT":"功率限制",
+    "PV_FEED_IN_PRICE":"光伏入网电价",
+    "CHP_FEED_IN_PRICE":"热电联产电价",
+    "EXTERNAL_POWER_PRICE":"外部电价",
+    "POWER":"功率（瓦）",
+    "TARIFF":"电价（欧分）",
+    "DEVICE_POWER":"设备电能",
+    "DEVICE_ENERGY_CONSUMPTION":"设备电能消耗"
+
+  }
+}

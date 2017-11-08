@@ -1,0 +1,32 @@
+{
+    "ELECTRIC_VEHICLE": {
+        "ELECTRIC_VEHICLE_NAV": "Electric Vehicle",
+      "STATUS":"Status",
+      "CHARGING":"Charging",
+      "POWER":"Power",
+      "PARKING_TIME":"Parking time",
+      "EXTERNAL_SIGNALS":"External Signals",
+      "CURRENT_ELECTRICITY_PRICE":"Current electricity Price",
+      "CURRENT_LOAD_LIMIT":"Current load limit",
+      "BATTERY_DETAILS":"Battery Details",
+      "CURRENT_CAPACITY":"Current Capacity",
+      "FULL_CAPACITY":"Full Capacity",
+      "CHARGING_PERCENT":"Charging Percent",
+      "DISTANCE_TO_REACH":"Distance To Reach",
+      "REMAINING_CHARGING_TIME":"Remaining Charging Time",
+      "NEXT_PLANNED_DRIVE":"Next Planned Drive",
+      "DEPARTURE_DATE_TIME":"Departure Date & Time",
+      "DEPARTURE_DATE_REQUIRED":"The departure date is required.",
+      "DATE_FORMAT_WRONG":"The date format should be dd/mm/yyyy.",
+      "DEPARTURE_TIME_REQUIRED":"The departure time is required.",
+      "DEPARTURE_TIME_WRONG":"The departure time should be later than now.",
+      "DISTANCE":"Distance",
+      "DISTANCE_IS_REQUIRED":"Distance is required.",
+      "INPUT_VALID_NUMBER":"Please input a valid number.",
+      "MINIMUM_RANGE":"Minimum Range",
+      "MINIMUM_RANGE_REQUIRED":"Minimum range is required.",
+      "START_CHARGING_NOW":"Start charging immediately",
+      "SAVE":"save"
+
+    }
+}

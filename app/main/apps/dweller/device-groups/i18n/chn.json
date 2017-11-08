@@ -1,0 +1,31 @@
+{
+    "DEVICE_GROUPS": {
+        "DEVICE_GROUPS_NAV": "设备组"
+    },
+  "SB": {
+    "ALL_SWITCH_ON":"全部打开",
+    "ALL_SWITCH_OFF":"全部关闭",
+    "ALL_OPEN":"全部打开",
+    "ALL_CLOSE":"全部关闭",
+    "SELECT_A_DEVICE":"选择一个设备",
+    "INPUT_A_GROUP_NAME":"输入一个组名",
+    "SAVE":"保存",
+    "CANCEL":"取消",
+    "SETTINGS": "设置",
+    "CALENDAR": "日历",
+    "OPTIONS": "选项",
+    "REMOVE_LIST": "移除列表",
+    "REMOVE_DEVICE": "移除设备",
+    "ADD_A_DEVICE": "添加设备",
+    "ADD_A_LIST": "点击添加设备组",
+    "ADD":"添加",
+    "CANCEL":"取消",
+    "STATE":"状态",
+    "POWER":"功率",
+    "LOCATION":"地点",
+    "SET_STATE_FOR_GROUP":"设置设备组状态:",
+    "ERRORS": {
+      "TITLE_REQUIRED": "请填写标题"
+    }
+  }
+}

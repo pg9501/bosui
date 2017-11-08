@@ -1,0 +1,135 @@
+{
+  "data": {
+    "name": "Power Consumption",
+    "children": [
+
+      {
+        "id": "Battery Group",
+        "name": "Battery Group",
+        "href": "assets/images/energy-flows/FullBattery.png",
+        "type":"pConGroup",
+        "infoName":"Power",
+        "unit":"W",
+        "children": [
+          {"id": "Battery1","name": "Battery","generalInfo":[
+            {"infoName":"Location","infoValue":"Basement"},
+            {"infoName":"Power","infoValue":"301", "unit":"W"}
+          ], "value": 301, "channels":[
+            {"channelName":"Battery","channelInfo":[
+              {"infoName":"charging","infoValue":"75%"}
+            ]}
+          ],"state":"75","inDeviceGroup":1,"type":"pCon","href": "assets/images/energy-flows/ChargedBattery.png"},
+          {"id": "Battery2","name": "Battery","generalInfo":[
+            {"infoName":"Location","infoValue":"Basement"},
+            {"infoName":"Power","infoValue":"316", "unit":"W"}
+          ],  "value": 316,"channels":[
+            {"channelName":"Battery","channelInfo":[
+                {"infoName":"charging","infoValue":"25%"}
+            ]}
+          ],"state":"25","inDeviceGroup":1,"type":"pCon","href": "assets/images/energy-flows/LowBattery.png"}
+        ]
+      },
+      {"id": "Washing Machine","name": "Washing Machine","generalInfo":[
+        {"infoName":"Location","infoValue":"Kitchen"},
+        {"infoName":"Power","infoValue":"701", "unit":"W"}
+      ], "value": 701,"channels":[
+        {"channelName":"Washing Machine","channelInfo":[
+          {"infoName":"status","infoValue":"Running"},
+          {"infoName":"Program","infoValue":"Delicate"},
+          {"infoName":"Phase","infoValue":"Rinse"}
+        ],"actions":[
+          {"actionName":"STOP"},
+          {"actionName":"SWITCH OFF"}
+        ]}
+      ],"DoFInfo":[
+        {"infoName":"Allowed Start Time","format":"TIME","defaultValue":""},
+        {"infoName":"Required End Time","format":"TIME","defaultValue":"2016/10/05 11:02"}
+      ],"inDeviceGroup":0,"type":"pCon","href": "assets/images/energy-flows/WashingMachine.png"},
+      {"id": "AC","name": "AC","generalInfo":[
+        {"infoName":"Location","infoValue":"Living Room"},
+        {"infoName":"Power","infoValue":"524", "unit":"W"}
+      ],"channels":[
+        {"channelName":"AC","channelInfo":[
+          {"infoName":"status","infoValue":"running"},
+          {"infoName":"Target Temperature","infoValue":"20", "unit":"degree Celsius"},
+          {"infoName":"Program","infoValue":"Dehumidity"},
+          {"infoName":"Phase","infoValue":"refrigeration"}
+        ],"actions":[
+          {"actionName":"STOP"}
+        ]}
+      ],"value": 524,"inDeviceGroup":0,"type":"pCon","href": "assets/images/energy-flows/AirConditioner.png"},
+      {"id": "EV","name": "EV", "generalInfo":[
+        {"infoName":"Location","infoValue":"Garage"},
+        {"infoName":"Power","infoValue":"671", "unit":"W"}
+      ],"value": 671,"channels":[
+        {"channelName":"EV Battery","channelInfo":[
+          {"infoName":"charging","infoValue":"60%"},
+          {"infoName":"Range","unit":"km","infoValue":"50"}
+        ]}
+      ],"DoFInfo":[
+        {"infoName":"Minimum Range","unit":"km","format":"NUMBER","defaultValue":"15"},
+        {"infoName":"Departure TIME","format":"TIME","defaultValue":"2016/10/06 12:02"}
+      ],"state":"60","inDeviceGroup":0,"type":"pCon","href": "assets/images/energy-flows/ElectricVehicle.png"},
+      {"id": "Fridge","name": "Fridge","generalInfo":[
+        {"infoName":"Location","infoValue":"Kitchen"},
+        {"infoName":"Power","infoValue":"571", "unit":"W"}
+      ],"value": 571,"unit":"W","channels":[
+        {"channelName":"Fridge","channelInfo":[
+          {"infoName":"Status","infoValue":"running"},
+          {"infoName":"Program","infoValue":"Refrigeration"}
+        ]}
+      ],"inDeviceGroup":0,"type":"pCon","href": "assets/images/energy-flows/Fridge.png"},
+      {
+        "id": "Light Bulb Group",
+        "name": "Light Bulb Group",
+        "href": "assets/images/energy-flows/GlobeBulb.png",
+        "type":"pConGroup",
+        "infoName":"Power",
+        "unit":"W",
+        "children": [
+          {"id": "Light Bulb(Bed Room)","name": "Light Bulb","generalInfo":[
+            {"infoName":"Location","infoValue":"Bed Room"},
+            {"infoName":"Power","infoValue":"301", "unit":"W"}
+          ], "value": 301,"channels":[
+            {"channelName":"Light Bulb","channelInfo":[
+              {"infoName":"Status","infoValue":"On"}
+            ]}
+          ],"actions":[
+            {"actionName":"SWITCH OFF"}
+          ],"inDeviceGroup":1,"type":"pCon","href": "assets/images/energy-flows/GlobeBulb.png"},
+          {"id": "Light Bulb(Living Room)","name": "Light Bulb","generalInfo":[
+            {"infoName":"Location","infoValue":"Living Room"},
+            {"infoName":"Power","infoValue":"316", "unit":"W"}
+          ], "value": 316,"channels":[
+            {"channelName":"Light Bulb","channelInfo":[
+              {"infoName":"Status","infoValue":"On"}
+            ]}
+          ],"actions":[
+            {"actionName":"SWITCH OFF"}
+          ],"inDeviceGroup":1,"type":"pCon","href": "assets/images/energy-flows/GlobeBulb.png"},
+          {"id": "Light Bulb(Bath Room)","name": "Light Bulb","generalInfo":[
+            {"infoName":"Location","infoValue":"Bath Room"},
+            {"infoName":"Power","infoValue":"351", "unit":"W"}
+          ],"value": 351,"channels":[
+            {"channelName":"Light Bulb","channelInfo":[
+              {"infoName":"Status","infoValue":"On"}
+            ]}
+          ],"actions":[
+            {"actionName":"SWITCH OFF"}
+          ],"inDeviceGroup":1,"type":"pCon","href": "assets/images/energy-flows/GlobeBulb.png"},
+          {"id": "Light Bulb(Kitchen)","name": "Light Bulb","generalInfo":[
+            {"infoName":"Location","infoValue":"Kitchen"},
+            {"infoName":"Power","infoValue":"376", "unit":"W"}
+          ], "value": 376,"channels":[
+            {"channelName":"Light Bulb","channelInfo":[
+              {"infoName":"Status","infoValue":"On"}
+            ]}
+          ],"actions":[
+            {"actionName":"SWITCH OFF"}
+          ],"inDeviceGroup":1,"type":"pCon","href": "assets/images/energy-flows/GlobeBulb.png"}
+        ]
+      }
+
+    ]
+  }
+}

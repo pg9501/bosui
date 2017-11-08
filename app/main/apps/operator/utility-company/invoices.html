@@ -1,0 +1,102 @@
+<div id="eshl-live" class="page-layout simple right-sidenav" layout="row">
+  <div class="center" flex ms-scroll>
+    <!-- HEADER -->
+    <div class="header md-accent-bg" layout="row" layout-align="space-around center">
+      <md-divider flex="10"></md-divider>
+      <div flex="50" layout="row" layout-align="start center" >
+        <img src="assets/images/bos.png" width="10%" height="10%" style="min-width:40px;"/>
+        <div layout="column">
+          <span class="headerFont" >BOS Panel</span>
+          <small class="subHeaderFont" style="margin-top: -5px; margin-left: 1px">Building Operating System GUI</small>
+        </div>
+      </div>
+
+      <div flex="40" layout="row" layout-align="space-around center" >
+        <div flex="40" id="weather" layout="column" layout-align="space-around center" class="timeFont"></div>
+        <div flex="40" layout="column" layout-align="end center" style="margin-left: 0%">
+          <span id="time" class="md-caption timeFont">{{getDate | date:'HH:mm:ss'}}</span>
+          <span id="week" class="md-caption timeFont" style="padding-top: 5%">{{getDate | date:'EEE'}}</span>
+          <span id="date" class="md-caption timeFont" style="padding-top: 5%">{{getDate | date:'dd/MM/yyyy'}}</span>
+        </div>
+        <div flex="20" class="toolbar" style="margin-left: 0%">
+          <md-button class="md-icon-button sidenav-toggle" ng-click="vm.toggleSidenav('sidenav')" hide-gt-md
+                     aria-label="Toggle sidenav">
+            <md-icon md-font-icon="icon-menu" class="icon"></md-icon>
+          </md-button>
+        </div>
+      </div>
+    </div>
+
+    <!-- CONTENT -->
+    <div class="content">
+      <md-tabs md-dynamic-height>
+        <md-tab label="{{'INVOICES.INVOICES_NAV'|translate}}" >
+          <section layout="row" layout-align="space-between stretch" flex>
+          <md-sidenav
+            class="md-sidenav-left"
+            md-component-id="left"
+            md-is-locked-open="$mdMedia('gt-md')"
+            md-whiteframe="4" >
+
+            <md-toolbar class="md-theme-indigo md-accent">
+              <h1 class="md-toolbar-tools ">{{'INVOICES.INVOICE_LIST'|translate}}</h1>
+            </md-toolbar>
+            <md-content layout-padding>
+
+              <div layout="column" layout-align="center">
+                <a href="" ng-repeat="invoice in vm.invoices" ng-click="vm.openInvoice(invoice.month)"><h3>{{invoice.month}}</h3></a>
+              </div>
+
+            </md-content>
+
+          </md-sidenav>
+          <md-content flex layout-padding>
+
+            <div id="pdfContainer" layout="column" layout-align="top center">
+
+              <div>
+                <md-button ng-click="vm.toggleLeft()"
+                           class="md-accent" hide-gt-md>
+                  Toggle left
+                </md-button>
+              </div>
+
+                <pdf-viewer url="{{vm.selectedInvoice.src}}" width="{{vm.containerWidth}}"></pdf-viewer>
+
+            </div>
+
+            <div flex></div>
+
+          </md-content>
+
+
+        </section>
+        </md-tab>
+      </md-tabs>
+
+
+
+    </div>
+
+  </div>
+
+
+
+</div>
+<script src="assets/lib/jquery.simpleWeather.js"></script>
+<script src="assets/lib/weather.js"></script>
+
+<!--<script src="bower_components/pdf.js-viewer/pdf.js"></script>
+<link rel="stylesheet" href="bower_components/pdf.js-viewer/viewer.css">
+
+<script src="bower_components/angular-pdfjs-viewer/dist/angular-pdfjs-viewer.js"></script>-->
+
+<script src="bower_components/pdfjs-dist/build/pdf.combined.js"></script>
+<script src="bower_components/ng-pdf-viewer/src/ng-pdf-viewer.min.js"></script>
+<script type="text/javascript">
+
+</script>
+
+<style>
+
+</style>

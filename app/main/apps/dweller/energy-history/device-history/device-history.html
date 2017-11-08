@@ -1,0 +1,230 @@
+<div id="eshl-live" class="page-layout simple right-sidenav" layout="row">
+  <div class="center" layout="column" flex ms-scroll>
+    <!-- HEADER -->
+    <div class="header md-accent-bg" layout="row" layout-align="space-around center">
+      <md-divider flex="10"></md-divider>
+      <div flex="50" layout="row" layout-align="start center" >
+        <img src="assets/images/bos.png" width="10%" height="10%" style="min-width:40px;"/>
+        <div layout="column">
+          <span class="headerFont" >BOS Panel</span>
+          <span class="subHeaderFont" style="margin-top: -5px; margin-left: 1px">Building Operating System GUI</span>
+        </div>
+      </div>
+
+      <div flex="40" layout="row" layout-align="space-around center" >
+        <div flex="40" id="weather" layout="column" layout-align="space-around center" class="timeFont"></div>
+        <div flex="40" layout="column" layout-align="end center" style="margin-left: 0%">
+          <span id="time" class="md-caption timeFont">{{getDate | date:'HH:mm:ss'}}</span>
+          <span id="week" class="md-caption timeFont" style="padding-top: 5%">{{getDate | date:'EEE'}}</span>
+          <span id="date" class="md-caption timeFont" style="padding-top: 5%">{{getDate | date:'dd/MM/yyyy'}}</span>
+        </div>
+        <div flex="20" class="toolbar" style="margin-left: 0%">
+          <md-button class="md-icon-button sidenav-toggle" ng-click="vm.toggleSidenav('sidenav')" hide-gt-md
+                     aria-label="Toggle sidenav">
+            <md-icon md-font-icon="icon-menu" class="icon"></md-icon>
+          </md-button>
+        </div>
+      </div>
+    </div>
+
+    <!-- CONTENT -->
+
+      <div class="content" flex>
+        <md-tabs layout-fill>
+          <md-tab label="{{'DEVICE_HISTORY.DEVICE_HISTORY_NAV'|translate}}" layout-fill>
+            <md-tab-content layout-fill>
+            <div layout="column" layout-fill>
+              <md-card>
+                <md-card-content>
+                  <div layout="row" layout-align="space-around center">
+                    <!--<md-radio-group layout="row" class="md-list-item-text" ng-model="vm.timePeriod" ng-change="vm.changeTimePeriod()" required>
+                      <md-radio-button value="Yesterday" ><p class="md-title">{{'DEVICE_HISTORY.YESTERDAY'|translate}}</p></md-radio-button>
+                      <md-radio-button value="Last three days"><p class="md-title">{{'DEVICE_HISTORY.LAST_THREE_DAYS'|translate}}</p></md-radio-button>
+                      <md-radio-button value="Last week"><p class="md-title">{{'DEVICE_HISTORY.LAST_WEEK'|translate}}</p></md-radio-button>
+                      <md-radio-button value="Last month"><p class="md-title">{{'DEVICE_HISTORY.LAST_MONTH'|translate}}</p></md-radio-button>
+                    </md-radio-group>-->
+
+                    <md-datepicker  ng-model="vm.selectedDate" md-min-date="vm.minDate" ng-change="vm.changeTimePeriod()" md-max-date="vm.maxDate" md-placeholder="Enter a date"></md-datepicker>
+
+                    <div layout="row"  layout-align="start center">
+                      <!--<h3 style="margin-right: 15px">Select a device:</h3>-->
+                      <md-input-container class="md-list-item-text">
+                        <label>{{'DEVICE_HISTORY.SELECT_A_DEVICE'|translate}}</label>
+                        <md-select ng-model="vm.device" aria-label="select"  ng-change="vm.changeDevice()" required>
+                          <md-option  ng-repeat="device in vm.devices">{{device}}
+                          </md-option>
+                        </md-select>
+                      </md-input-container>
+                    </div>
+
+                    <div layout="row"  layout-align="start center">
+                      <!--<h3 style="margin-right: 15px">Select a community:</h3>-->
+                      <md-input-container class="md-list-item-text" style="width: 150px">
+                        <label>{{'DEVICE_HISTORY.SELECT_A_COMMUNITY'|translate}}:</label>
+                        <md-select ng-model="vm.community" aria-label="select"  ng-change="vm.changeCommunity()" required>
+                          <md-option  ng-repeat="community in vm.communities" ng-selected="$first">{{community.name}}
+                          </md-option>
+                        </md-select>
+                      </md-input-container>
+                    </div>
+                  </div>
+                </md-card-content>
+              </md-card>
+              <div layout="row" layout-align="space-around center" class="md-padding">
+                <div layout="column"  style="font-size: 18px">
+                  <div layout="row" flex>
+                    <div ng-switch on="vm.type1">
+                      <div ng-switch-when="Consumption">
+                        <div >{{'DEVICE_HISTORY.DEVICE_ENERGY'|translate}} {{'DEVICE_HISTORY.CONSUMPTION'|translate}}:&nbsp;</div>
+                      </div>
+                      <div ng-switch-when="Generation">
+                        <div >{{'DEVICE_HISTORY.DEVICE_ENERGY'|translate}} {{'DEVICE_HISTORY.GENERATION'|translate}}:&nbsp;</div>
+                      </div>
+                    </div>
+
+                    <b> {{vm.deviceEnergyConsumption}}</b>
+                  </div>
+                  <div layout="row" flex>
+                    <div ng-switch on="vm.type1">
+                      <div ng-switch-when="Consumption">
+                        <div >{{'DEVICE_HISTORY.COMMUNITY_AVERAGE_ENERGY'|translate}} {{'DEVICE_HISTORY.CONSUMPTION'|translate}}:&nbsp;</div>
+                      </div>
+                      <div ng-switch-when="Generation">
+                        <div >{{'DEVICE_HISTORY.COMMUNITY_AVERAGE_ENERGY'|translate}} {{'DEVICE_HISTORY.GENERATION'|translate}}:&nbsp;</div>
+                      </div>
+                    </div>
+
+                    <b> {{vm.communityEnergyConsumption}}</b>
+                  </div>
+                  <div layout="row" flex>
+                    <div >{{'DEVICE_HISTORY.RANKING_IN_THE_COMMUNITY'|translate}}:&nbsp;</div>
+                    <b> {{vm.consumptionRanking}}</b>
+                    <div style='margin-left: 10px' layout="column" layout-align="center"><img ng-src="{{vm.energyMedal}}" /></div>
+                  </div>
+                </div>
+
+                <div layout="column"  style="font-size: 18px">
+                  <div layout="row" flex>
+                    <div ng-switch on="vm.type1">
+                      <div ng-switch-when="Consumption">
+                        <div ng-switch on="vm.type2">
+                          <div ng-switch-when="Cost">
+                            <div >{{'DEVICE_HISTORY.DEVICE_ENERGY'|translate}} {{'DEVICE_HISTORY.CONSUMPTION'|translate}} {{'DEVICE_HISTORY.COST'|translate}}:&nbsp;</div>
+                          </div>
+                          <div ng-switch-when="Profit">
+                            <div >{{'DEVICE_HISTORY.DEVICE_ENERGY'|translate}} {{'DEVICE_HISTORY.CONSUMPTION'|translate}} {{'DEVICE_HISTORY.PROFIT'|translate}}:&nbsp;</div>
+                          </div>
+                        </div>
+
+                      </div>
+                      <div ng-switch-when="Generation">
+                        <div ng-switch on="vm.type2">
+                          <div ng-switch-when="Cost">
+                            <div >{{'DEVICE_HISTORY.DEVICE_ENERGY'|translate}} {{'DEVICE_HISTORY.GENERATION'|translate}} {{'DEVICE_HISTORY.COST'|translate}}:&nbsp;</div>
+                          </div>
+                          <div ng-switch-when="Profit">
+                            <div >{{'DEVICE_HISTORY.DEVICE_ENERGY'|translate}} {{'DEVICE_HISTORY.GENERATION'|translate}} {{'DEVICE_HISTORY.PROFIT'|translate}}:&nbsp;</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <b> {{vm.deviceEnergyConsumptionCost}}</b>
+                  </div>
+                  <div layout="row" flex>
+                    <div ng-switch on="vm.type1">
+                      <div ng-switch-when="Consumption">
+                        <div ng-switch on="vm.type2">
+                          <div ng-switch-when="Cost">
+                            <div >{{'DEVICE_HISTORY.COMMUNITY_AVERAGE_ENERGY'|translate}} {{'DEVICE_HISTORY.CONSUMPTION'|translate}} {{'DEVICE_HISTORY.COST'|translate}}:&nbsp;</div>
+                          </div>
+                          <div ng-switch-when="Profit">
+                            <div >{{'DEVICE_HISTORY.COMMUNITY_AVERAGE_ENERGY'|translate}} {{'DEVICE_HISTORY.CONSUMPTION'|translate}} {{'DEVICE_HISTORY.PROFIT'|translate}}:&nbsp;</div>
+                          </div>
+                        </div>
+
+                      </div>
+                      <div ng-switch-when="Generation">
+                        <div ng-switch on="vm.type2">
+                          <div ng-switch-when="Cost">
+                            <div >{{'DEVICE_HISTORY.COMMUNITY_AVERAGE_ENERGY'|translate}} {{'DEVICE_HISTORY.GENERATION'|translate}} {{'DEVICE_HISTORY.COST'|translate}}:&nbsp;</div>
+                          </div>
+                          <div ng-switch-when="Profit">
+                            <div >{{'DEVICE_HISTORY.COMMUNITY_AVERAGE_ENERGY'|translate}} {{'DEVICE_HISTORY.GENERATION'|translate}} {{'DEVICE_HISTORY.PROFIT'|translate}}:&nbsp;</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <b> {{vm.communityEnergyConsumptionCost}}</b></div>
+                  <div layout="row" flex>
+                    <div >{{'DEVICE_HISTORY.RANKING_IN_THE_COMMUNITY'|translate}}:&nbsp;</div>
+                    <b> {{vm.costRanking}}</b>
+                    <div style='margin-left: 10px' layout="column" layout-align="center" ><img ng-src="{{vm.costMedal}}" /></div>
+                  </div>
+                </div>
+
+              </div>
+              <div >
+              <table class="md-padding" align="right">
+                <tr>
+                  <td><hr  style="width:40px; height:3px; background-color:#9b59b6" /></td>
+                  <td><span>{{'DEVICE_HISTORY.POWER_UPPER_LIMIT'|translate}}&nbsp;</span></td>
+                  <td ng-if="vm.device=='PV' ||vm.device=='CHP'"><hr style="width:40px; height:3px; background-color:#cc99ff" ></td>
+                  <td ng-if="vm.device=='PV' ||vm.device=='CHP'"><span>{{'DEVICE_HISTORY.POWER_LOWER_LIMIT'|translate}}&nbsp;</span></td>
+                  <td><hr  style="width:40px; height:3px; background-color:#009999" /></td>
+                  <td><span>{{'DEVICE_HISTORY.EXTERNAL_POWER_PRICE'|translate}}&nbsp;</span></td>
+                  <td ng-if="vm.device=='PV'"><hr style="width:40px; height:3px; background-color:#00cc66"></td>
+                  <td ng-if="vm.device=='PV'"><span>{{'DEVICE_HISTORY.PV_FEED_IN_PRICE'|translate}}&nbsp;</span></td>
+                  <td ng-if="vm.device=='CHP'"><hr style="width:40px; height:3px; background-color:#33cccc"></td>
+                  <td ng-if="vm.device=='CHP'"><span>{{'DEVICE_HISTORY.CHP_FEED_IN_PRICE'|translate}}&nbsp;</span></td>
+                  <td><hr style="width:40px; height:3px; background-color:#4E342E" /></td>
+                  <td>
+                    <div ng-switch on="vm.type1">
+                      <div ng-switch-when="Consumption">
+                        <div >{{'DEVICE_HISTORY.DEVICE_ENERGY'|translate}} {{'DEVICE_HISTORY.CONSUMPTION'|translate}}&nbsp;</div>
+                      </div>
+                      <div ng-switch-when="Generation">
+                        <div >{{'DEVICE_HISTORY.DEVICE_ENERGY'|translate}} {{'DEVICE_HISTORY.GENERATION'|translate}}&nbsp;</div>
+                      </div>
+                    </div>
+                    <!--<span>Device Power {{vm.type1}}&nbsp;</span>-->
+                  </td>
+                </tr>
+              </table>
+              </div>
+              <div flex clas="md-padding" id="lineChartContainerForDeviceHistory" style="height: 400px; margin-top: 30px" container-id ="lineChartContainerForDeviceHistory"  dual-yaxis-line-chart-for-dweller-history
+                   y1-label="{{'DEVICE_HISTORY.POWER'|translate}}" y2-label="{{'DEVICE_HISTORY.TARIFF'|translate}}"
+                   power-upper-limit-label="{{'DEVICE_HISTORY.POWER_UPPER_LIMIT'|translate}}" electricity-price-label="{{'DEVICE_HISTORY.EXTERNAL_POWER_PRICE'|translate}}"
+                   power-limit-label="{{'DEVICE_HISTORY.POWER_LIMIT'|translate}}" pv-feed-in-price-label="{{'DEVICE_HISTORY.PV_FEED_IN_PRICE'|translate}}" chp-feed-in-price-label="{{'DEVICE_HISTORY.CHP_FEED_IN_PRICE'|translate}}"
+                   device-energy-consumption-label="{{'DEVICE_HISTORY.DEVICE_ENERGY_CONSUMPTION'|translate}}"
+                   power-lower-limit-label="{{'DEVICE_HISTORY.POWER_LOWER_LIMIT'|translate}}"
+                   is-render-all="{{vm.isRenderAll}}" is-render-y1="{{vm.isRenderY1}}" start-time-stamp="{{vm.startTimeStamp}}" end-time-stamp="{{vm.endTimeStamp}}"
+                   power-upper-limit-data="{{vm.powerUpperLimitData}}" power-lower-limit-data="{{vm.powerLowerLimitData}}" electricity-price-data="{{vm.electricityPrices}}"
+                   pv-feedin-price-data="{{vm.pvFeedinPrices}}" chp-feedin-price-data="{{vm.chpFeedinPrices}}"
+                   energy-consumption-data="{{vm.deviceEnergyConsumptionData}}" has-minus-yaxis="{{vm.hasMinusYaxis}}">
+              </div>
+
+            </div>
+            </md-tab-content>
+          </md-tab>
+        </md-tabs>
+
+    </div>
+
+
+</div>
+
+
+</div>
+<script src="assets/lib/jquery.simpleWeather.js"></script>
+<script src="assets/lib/weather.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+<!--<script type="text/javascript">
+  $("#eshl-live").load(function() {
+    window.stage = new Kinetic.Stage({
+      container: 'container_floorPlan_One'
+    });
+    var initialScale = window.stage.scale(); //returns {x: 1, y: 1}
+  })
+</script>-->

@@ -1,0 +1,46 @@
+{
+  "DWELLERS_NAV": "Bewohner",
+  "DEVICES": "Geräte",
+  "OPERATIONS": "Operationen",
+    "DWELLERS": {
+        "ALL_DWELLERS_NAV": "Bewohner bearbeiten",
+      "ADD_DWELLERS_NAV":"Bewohner hinzufügen",
+      "SELECT_A_DWELLER":"einen Bewohner auswählen",
+      "NAME":"Name",
+      "EDIT_THIS_DWELLER":"diesen Bewohner bearbeiten",
+      "REMOVE_THIS_DWELLER":"diesen Bewohner entfernen",
+      "PASSWORD":"Passwort",
+      "PHONE":"Telefon",
+      "EMAIL":"Email",
+      "NOTE":"Anmerkung",
+      "PERMISSION":"Erlaubnis",
+      "PERMISSIONS":"Erlaubnis",
+      "DEVICES":"Geräte",
+      "OPERATIONS":"Operationen",
+      "STEP_1":"Schritt 1: Persönliche Informationen",
+      "INITIAL_PASSWORD":"anfängliches Passwort",
+      "PHONE_NUMBER":"Telefonnummer",
+      "PERSONAL_NOTE":"persönliche Anmerkung",
+      "NEXT_STEP":"Nächster Schritt",
+      "STEP_2":"Schritt 2: Erlaubnis",
+      "REMOVE_THIS_PERMISSION":"Diese Erlaubnis entfernen",
+      "ADD_PERMISSION":"eine neue Erlaubnis hinzufügen",
+      "PERSONAL_INFORMATION":"Persönliche Informationen",
+      "ASSIGNED_PERMISSIONS":"zugeordnete Erlaubnis",
+      "FINISH_CHECK_SUBMIT":"Finish: Überprüfung & Einreichung",
+      "SUBMIT":"einreichen",
+      "SELECT_ALL":"Alles auswählen",
+      "UN":"Un",
+      "SAVE":"speichern",
+      "CANCEL":"abbrechen",
+      "ERRORS":{
+        "USERNAME_REQUIRED":"Ein Benutzername ist erforderlich",
+        "PASSWORD_REQUIRED":"Ein anfängliches Passwort ist erforderlich",
+        "VALID_PHONE_NUMBER_REQUIRED":"Gültige Telefonnummer ist erforderlich",
+        "VALID_EMAIL_REQUIRED":"Gültige E-Mail-Adresse ist erforderlich"
+      }
+    },
+  "ADD_DWELLERS": {
+    "ADD_DWELLERS_NAV": "Bewohner hinzufügen"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "LIFE_ASSISTANT_NAV":"Life Assistant",
+    "NOTES": {
+        "NOTES": "Notizen",
+        "SEARCH_NOTES": "Notizen suchen",
+        "TOGGLE_SIDENAV": "sidenav umschalten",
+        "OPEN_SEARCH_TOOLBAR": "Suchleiste öffnen",
+        "CLOSE": "Schließen",
+        "ARCHIVE": "Archiv",
+        "REMINDERS": "Erinnerungen",
+        "LABELS": "Labels",
+        "NEW_LABEL": "Neues Label",
+        "TAKE_A_NOTE": "Mache eine Notiz..",
+        "SEARCH_LABELS": "Labels suchen...",
+        "SAVE": "Speichern",
+        "ADD": "Hinzufügen",
+        "ADD_IMAGE": "Bild hinzufügen",
+        "TOGGLE_LABEL": "Label umschalten",
+        "DELETE_IMAGE": "Bild löschen",
+        "NO_NOTES_YET":"Noch keine Notizen...",
+        "NO_NOTES_WITH_REMINDERS":"Keine Notizen mit Erinnerungen",
+        "NO_ARCHIVED_NOTES":"Keine archivierten Notizen",
+        "NO_NOTES_WITH_THIS_LABEL":"Keine Notizen mit diesem Etikett",
+        "NO_RESULTS":"Keine Ergebnisse..."
+    }
+}

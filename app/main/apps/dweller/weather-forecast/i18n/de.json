@@ -1,0 +1,12 @@
+{
+    "WEATHER_FORECAST": {
+        "WEATHER_FORECAST_NAV": "Wettervorhersage",
+      "TODAY":"Heute",
+      "HIGH":"hoch",
+      "LOW":"niedrig",
+      "HUMIDITY":"Feuchtigkeit",
+      "PRESSURE":"Druck",
+      "WIND_SPEED":"Windgeschwindigkeit",
+      "FORECAST":"Vorhersage"
+    }
+}

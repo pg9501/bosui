@@ -1,0 +1,46 @@
+{
+  "DWELLERS_NAV": "Residents",
+  "DEVICES": "Devices",
+  "OPERATIONS": "Operations",
+    "DWELLERS": {
+        "ALL_DWELLERS_NAV": "Edit Residents",
+      "ADD_DWELLERS_NAV":"Add Residents",
+      "SELECT_A_DWELLER":"Select a resident",
+      "NAME":"Name",
+      "EDIT_THIS_DWELLER":"Edit this resident",
+      "REMOVE_THIS_DWELLER":"Remove this resident",
+      "PASSWORD":"Password",
+      "PHONE":"Phone",
+      "EMAIL":"Email",
+      "NOTE":"Note",
+      "PERMISSION":"Permission",
+      "PERMISSIONS":"Permissions",
+      "DEVICES":"Devices",
+      "OPERATIONS":"Operations",
+      "STEP_1":"Step 1: Personal Information",
+      "INITIAL_PASSWORD":"Initial Password",
+      "PHONE_NUMBER":"Phone Number",
+      "PERSONAL_NOTE":"Personal Note",
+      "NEXT_STEP":"Next Step",
+      "STEP_2":"Step 2: Permissions",
+      "REMOVE_THIS_PERMISSION":"Remove this permission",
+      "ADD_PERMISSION":"Add a new permission",
+      "PERSONAL_INFORMATION":"Personal Information",
+      "ASSIGNED_PERMISSIONS":"Assigned Permissions",
+      "FINISH_CHECK_SUBMIT":"Finish: Check & Submit",
+      "SUBMIT":"Submit",
+      "SELECT_ALL":"Select All",
+      "UN":"Un",
+      "SAVE":"Save",
+      "CANCEL":"Cancel",
+      "ERRORS":{
+        "USERNAME_REQUIRED":"Username is required",
+        "PASSWORD_REQUIRED":"Initial password is required",
+        "VALID_PHONE_NUMBER_REQUIRED":"Valid phone number is required",
+        "VALID_EMAIL_REQUIRED":"Valid email address is required"
+      }
+    },
+  "ADD_DWELLERS": {
+    "ADD_DWELLERS_NAV": "Add Residents"
+  }
+}

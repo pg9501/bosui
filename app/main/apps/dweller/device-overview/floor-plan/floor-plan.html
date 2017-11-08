@@ -1,0 +1,108 @@
+<div id="eshl-live" class="page-layout simple right-sidenav" layout="row">
+  <div  class="center" flex ms-scroll>
+    <!-- HEADER -->
+    <div class="header md-accent-bg" layout="row" layout-align="space-around center">
+      <md-divider flex="10"></md-divider>
+      <div flex="50" layout="row" layout-align="start center" >
+        <img src="assets/images/bos.png" width="10%" height="10%" style="min-width:40px;"/>
+        <div layout="column">
+          <span class="headerFont" >BOS Panel</span>
+          <span class="subHeaderFont" style="margin-top: -5px; margin-left: 1px">Building Operating System GUI</span>
+        </div>
+      </div>
+
+      <div flex="40" layout="row" layout-align="space-around center" >
+        <div flex="40" id="weather" layout="column" layout-align="space-around center" class="timeFont"></div>
+        <div flex="40" layout="column" layout-align="end center" style="margin-left: 0%">
+          <span id="time" class="md-caption timeFont">{{getDate | date:'HH:mm:ss'}}</span>
+          <span id="week" class="md-caption timeFont" style="padding-top: 5%">{{getDate | date:'EEE'}}</span>
+          <span id="date" class="md-caption timeFont" style="padding-top: 5%">{{getDate | date:'dd/MM/yyyy'}}</span>
+        </div>
+        <div flex="20" class="toolbar" style="margin-left: 0%">
+          <md-button class="md-icon-button sidenav-toggle" ng-click="vm.toggleSidenav('sidenav')" hide-gt-md
+                     aria-label="Toggle sidenav">
+            <md-icon md-font-icon="icon-menu" class="icon"></md-icon>
+          </md-button>
+        </div>
+      </div>
+    </div>
+
+    <!-- CONTENT -->
+    <div id="eshl-floorplan" class="content">
+      <md-tabs md-dynamic-height md-selected="vm.selectedIndex">
+
+        <md-tab ng-repeat="tab in vm.accessibleFloors"
+                ng-disabled="tab.disabled"
+                label="{{tab.title}}">
+          <div layout="row" layout-align="space-between">
+            <div id="{{'container_floorPlan_'+tab.title.replace(' ','_')}}" resizable on-resize="containerResize()"  style="width:40vw;height:30vh;border:1px solid black">
+              <div id="{{'container_'+tab.title.replace(' ','_')}}"></div>
+            </div>
+           <!-- <md-card class="md-padding">
+              <div layout="column"  layout-wrap >
+                ss
+              </div>
+            </md-card>-->
+            <!--<md-button ng-click="vm.toggleSidenav()" class="md-raised">
+              Toggle Sidenav
+            </md-button>-->
+
+          </div>
+          <floor-plan-information ></floor-plan-information>
+         <!-- <md-sidenav class="md-sidenav-right" md-component-id="right"
+                      md-whiteframe="4">
+
+            <md-toolbar class="md-accent">
+              <h1 class="md-toolbar-tools">Information</h1>
+            </md-toolbar>
+
+            <md-content layout-margin>
+              <p>
+                This sidenav is not showing any backdrop, where users can click on it, to close the sidenav.
+              </p>
+              <md-button ng-click="vm.toggleSidenav()" class="md-accent">
+                Close this Sidenav
+              </md-button>
+            </md-content>
+
+          </md-sidenav>-->
+
+        </md-tab>
+
+
+      </md-tabs>
+
+
+    </div>
+
+  </div>
+
+
+
+</div>
+<script src="assets/lib/jquery.simpleWeather.js"></script>
+<script src="assets/lib/weather.js"></script>
+<script src="app/main/apps/dweller/device-overview/floor-plan/floor-plan.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+<script type="text/javascript">
+
+  function isJson(str) {
+    try {
+      JSON.parse(str);
+    } catch (e) {
+      return false;
+    }
+    return true;
+  }
+  //save initial scale
+
+ /* var initialScale = window.stage.scale(); //returns {x: 1, y: 1}
+  var initialWidth = $("#container_floorPlan_One").innerWidth(); // initial width
+  var initialHeight = $("#container_floorPlan_One").innerHeight(); // initial height
+  var isContainerResize=false; // if the container is resized, the scaled will also be changed*/
+
+
+
+</script>
+
+

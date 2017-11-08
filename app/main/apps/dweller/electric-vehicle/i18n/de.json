@@ -1,0 +1,32 @@
+{
+    "ELECTRIC_VEHICLE": {
+        "ELECTRIC_VEHICLE_NAV": "Elektrisches Fahrzeug",
+      "STATUS":"Status",
+      "CHARGING":"Aufladen",
+      "POWER":"Leistung",
+      "PARKING_TIME":"Parkzeit",
+      "EXTERNAL_SIGNALS":"Externe Signale",
+      "CURRENT_ELECTRICITY_PRICE":"Aktueller Strompreis",
+      "CURRENT_LOAD_LIMIT":"Strombelastung",
+      "BATTERY_DETAILS":"Batteriedetails",
+      "CURRENT_CAPACITY":"Aktuelle Kapazität",
+      "FULL_CAPACITY":"Volle Kapazität",
+      "CHARGING_PERCENT":"Aufladung Prozent",
+      "DISTANCE_TO_REACH":"Entfernung zu erreichen",
+      "REMAINING_CHARGING_TIME":"Verbleibende Ladezeit",
+      "NEXT_PLANNED_DRIVE":"Nächstes geplantes Laufwerk",
+      "DEPARTURE_DATE_TIME":"Abfahrtsdatum & Uhrzeit",
+      "DEPARTURE_DATE_REQUIRED":"Der Abreisedatum ist erforderlich.",
+      "DATE_FORMAT_WRONG":"Das Datumsformat sollte dd / mm / yyyy sein.",
+      "DEPARTURE_TIME_REQUIRED":"Die Abfahrtszeit ist erforderlich.",
+      "DEPARTURE_TIME_WRONG":"Die Abfahrtszeit sollte später als jetzt sein.",
+      "DISTANCE":"Entfernung",
+      "DISTANCE_IS_REQUIRED":"Entfernung ist erforderlich.",
+      "INPUT_VALID_NUMBER":"Bitte geben Sie eine gültige Nummer ein.",
+      "MINIMUM_RANGE":"Mindestbereich",
+      "MINIMUM_RANGE_REQUIRED":"Mindestbereich ist erforderlich.",
+      "START_CHARGING_NOW":"Sofort aufladen",
+      "SAVE":"Speichern"
+
+    }
+}

@@ -1,0 +1,109 @@
+<div id="notes" class="" layout="column">
+  <!-- TOOLBAR -->
+  <md-toolbar class="md-accent">
+    <div class="md-toolbar-tools" layout="row" layout-align="space-between center">
+      <div class="main-title" layout="row" layout-align="start center">
+        <md-icon class="logo-icon mr-8" md-font-icon="icon-white-balance-sunny"></md-icon>
+        <span class="title" translate="WEATHER_FORECAST.WEATHER_FORECAST_NAV">Weather Forecast</span>
+      </div>
+    </div>
+  </md-toolbar>
+
+
+    <!-- CONTENT -->
+    <md-content ms-scroll flex>
+
+      <table width="80%" style="margin-top: 30px">
+        <tr style="background-color: #FAC666; color: #0b58a2; font-weight: bold" >
+          <td>{{"WEATHER_FORECAST.TODAY"|translate}} ( {{vm.sharedWeatherData['current']['week']|| 'n.a'}} )</td>
+          <td>{{vm.sharedWeatherData['prediction'][0]['week']|| 'n.a'}}</td>
+          <td>{{vm.sharedWeatherData['prediction'][1]['week']|| 'n.a'}}</td>
+          <td>{{vm.sharedWeatherData['prediction'][2]['week']|| 'n.a'}}</td>
+          <td>{{vm.sharedWeatherData['prediction'][3]['week']|| 'n.a'}}</td>
+        </tr>
+        <tr style="background-color: cadetblue; color: white">
+          <td>
+            <div>{{vm.sharedWeatherData['current'][0]['date']|| 'n.a'}}</div>
+          </td>
+          <td>
+            <div>{{vm.sharedWeatherData['prediction'][0]['date']|| 'n.a'}}</div>
+          </td>
+          <td>
+            <div>{{vm.sharedWeatherData['prediction'][1]['date']|| 'n.a'}}</div>
+          </td>
+          <td>
+            <div>{{vm.sharedWeatherData['prediction'][2]['date']|| 'n.a'}}</div>
+          </td>
+          <td>
+            <div>{{vm.sharedWeatherData['prediction'][3]['date']|| 'n.a'}}</div>
+          </td>
+        </tr>
+        <tr style="background-color: lightyellow" >
+          <td>
+            <div style="margin-top: 25px">{{vm.sharedWeatherData['current'][0]['type']|| 'n.a'}}: {{vm.sharedWeatherData['current'][0]['time']|| 'n.a'}}</div>
+            <img src="http://openweathermap.org/img/w/{{vm.sharedWeatherData['current'][0]['icon']}}.png" style="width: 80px;height: 80px;margin-top: 25px"/>
+            <div style="font-weight: bold;font-size: large;margin-top: -15px" >{{vm.sharedWeatherData['current'][0]['weather']|| 'n.a'}}</div>
+            <div style="font-weight: bold;font-size: medium;margin-top: 10px">{{vm.sharedWeatherData['current'][0]['temp']|| 'n.a'}} &deg;C</div>
+            <div style="font-weight: bold;font-size: medium;margin-top: 5px">{{"WEATHER_FORECAST.HIGH"|translate}}: {{vm.sharedWeatherData['current'][0]['temp_max']|| 'n.a'}} &deg;C</div>
+            <div style="font-weight: bold;font-size: medium;">{{"WEATHER_FORECAST.LOW"|translate}}: {{vm.sharedWeatherData['current'][0]['temp_min']|| 'n.a'}} &deg;C</div>
+            <div style="font-size: medium;margin-top: 10px">{{"WEATHER_FORECAST.HUMIDITY"|translate}}: {{vm.sharedWeatherData['current'][0]['humidity']|| 'n.a'}}%</div>
+            <div style="font-size: medium;">{{"WEATHER_FORECAST.PRESSURE"|translate}}: {{vm.sharedWeatherData['current'][0]['pressure']|| 'n.a'}} hPa</div>
+            <div style="font-size: medium; margin-bottom: 30px">{{"WEATHER_FORECAST.WIND_SPEED"|translate}}: {{vm.sharedWeatherData['current'][0]['wind_speed']|| 'n.a'}} km/h</div>
+          </td>
+          <td>
+            <div>Forecast</div>
+            <img src="http://openweathermap.org/img/w/{{vm.sharedWeatherData['prediction'][0]['icon']}}.png" style="width: 80px;height: 80px;margin-top: 25px"/>
+            <div style="font-weight: bold;font-size: large;margin-top: -15px" >{{vm.sharedWeatherData['prediction'][0]['weather']|| 'n.a'}}</div>
+            <div style="font-weight: bold;font-size: medium;margin-top: 10px">{{"WEATHER_FORECAST.HIGH"|translate}}: {{vm.sharedWeatherData['prediction'][0]['temp_max']|| 'n.a'}} &deg;C</div>
+            <div style="font-weight: bold;font-size: medium;">{{"WEATHER_FORECAST.LOW"|translate}}: {{vm.sharedWeatherData['prediction'][0]['temp_min']|| 'n.a'}} &deg;C</div>
+            <div style="font-size: medium;margin-top: 10px">{{"WEATHER_FORECAST.HUMIDITY"|translate}}: {{vm.sharedWeatherData['prediction'][0]['humidity']|| 'n.a'}}%</div>
+            <div style="font-size: medium;">{{"WEATHER_FORECAST.PRESSURE"|translate}}: {{vm.sharedWeatherData['prediction'][0]['pressure']|| 'n.a'}} hPa</div>
+            <div style="font-size: medium; margin-bottom: 30px">{{"WEATHER_FORECAST.WIND_SPEED"|translate}}: {{vm.sharedWeatherData['prediction'][0]['wind_speed']|| 'n.a'}} km/h</div>
+
+          </td>
+          <td>
+            <div>Forecast</div>
+            <img src="http://openweathermap.org/img/w/{{vm.sharedWeatherData['prediction'][1]['icon']}}.png" style="width: 80px;height: 80px;margin-top: 25px"/>
+            <div style="font-weight: bold;font-size: large;margin-top: -15px" >{{vm.sharedWeatherData['prediction'][1]['weather']|| 'n.a'}}</div>
+            <div style="font-weight: bold;font-size: medium;margin-top: 10px">{{"WEATHER_FORECAST.HIGH"|translate}}: {{vm.sharedWeatherData['prediction'][1]['temp_max']|| 'n.a'}} &deg;C</div>
+            <div style="font-weight: bold;font-size: medium;">{{"WEATHER_FORECAST.LOW"|translate}}: {{vm.sharedWeatherData['prediction'][1]['temp_min']|| 'n.a'}} &deg;C</div>
+            <div style="font-size: medium;margin-top: 10px">{{"WEATHER_FORECAST.HUMIDITY"|translate}}: {{vm.sharedWeatherData['prediction'][1]['humidity']|| 'n.a'}}%</div>
+            <div style="font-size: medium;">{{"WEATHER_FORECAST.PRESSURE"|translate}}: {{vm.sharedWeatherData['prediction'][1]['pressure']|| 'n.a'}} hPa</div>
+            <div style="font-size: medium; margin-bottom: 30px">{{"WEATHER_FORECAST.WIND_SPEED"|translate}}: {{vm.sharedWeatherData['prediction'][1]['wind_speed']|| 'n.a'}} km/h</div>
+
+          </td>
+          <td>
+            <div>Forecast</div>
+            <img src="http://openweathermap.org/img/w/{{vm.sharedWeatherData['prediction'][2]['icon']}}.png" style="width: 80px;height: 80px;margin-top: 25px"/>
+            <div style="font-weight: bold;font-size: large;margin-top: -15px" >{{vm.sharedWeatherData['prediction'][2]['weather']|| 'n.a'}}</div>
+            <div style="font-weight: bold;font-size: medium;margin-top: 10px">{{"WEATHER_FORECAST.HIGH"|translate}}: {{vm.sharedWeatherData['prediction'][2]['temp_max']|| 'n.a'}} &deg;C</div>
+            <div style="font-weight: bold;font-size: medium;">{{"WEATHER_FORECAST.LOW"|translate}}: {{vm.sharedWeatherData['prediction'][2]['temp_min']|| 'n.a'}} &deg;C</div>
+            <div style="font-size: medium;margin-top: 10px">{{"WEATHER_FORECAST.HUMIDITY"|translate}}: {{vm.sharedWeatherData['prediction'][2]['humidity']|| 'n.a'}}%</div>
+            <div style="font-size: medium;">{{"WEATHER_FORECAST.PRESSURE"|translate}}: {{vm.sharedWeatherData['prediction'][2]['pressure']|| 'n.a'}} hPa</div>
+            <div style="font-size: medium; margin-bottom: 30px">{{"WEATHER_FORECAST.WIND_SPEED"|translate}}: {{vm.sharedWeatherData['prediction'][2]['wind_speed']|| 'n.a'}} km/h</div>
+
+          </td>
+          <td>
+            <div>Forecast</div>
+            <img src="http://openweathermap.org/img/w/{{vm.sharedWeatherData['prediction'][3]['icon']}}.png" style="width: 80px;height: 80px;margin-top: 25px"/>
+            <div style="font-weight: bold;font-size: large;margin-top: -15px" >{{vm.sharedWeatherData['prediction'][3]['weather']|| 'n.a'}}</div>
+            <div style="font-weight: bold;font-size: medium;margin-top: 10px">{{"WEATHER_FORECAST.HIGH"|translate}}: {{vm.sharedWeatherData['prediction'][3]['temp_max']|| 'n.a'}} &deg;C</div>
+            <div style="font-weight: bold;font-size: medium;">{{"WEATHER_FORECAST.LOW"|translate}}: {{vm.sharedWeatherData['prediction'][3]['temp_min']|| 'n.a'}} &deg;C</div>
+            <div style="font-size: medium;margin-top: 10px">{{"WEATHER_FORECAST.HUMIDITY"|translate}}: {{vm.sharedWeatherData['prediction'][3]['humidity']|| 'n.a'}}%</div>
+            <div style="font-size: medium;">{{"WEATHER_FORECAST.PRESSURE"|translate}}: {{vm.sharedWeatherData['prediction'][3]['pressure']|| 'n.a'}} hPa</div>
+            <div style="font-size: medium; margin-bottom: 30px">{{"WEATHER_FORECAST.WIND_SPEED"|translate}}: {{vm.sharedWeatherData['prediction'][3]['wind_speed']|| 'n.a'}} km/h</div>
+
+          </td>
+        </tr>
+
+      </table>
+    </div>
+
+
+</md-content>
+
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+

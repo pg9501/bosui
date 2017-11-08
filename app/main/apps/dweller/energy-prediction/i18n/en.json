@@ -1,0 +1,18 @@
+{
+    "ENERGY_PREDICTION": {
+        "ENERGY_PREDICTION_NAV": "Energy Prediction",
+      "LOAD_LIMIT":"Load Limit",
+      "ELECTRICITY_PRICE":"External Electricity Price",
+      "CHP_FEED_IN_PRICE":"CHP Feed-in Price",
+      "PV_FEED_IN_PRICE":"PV Feed-in Price",
+      "POWER":"POWER (W)",
+      "TARIFF":"Tariff (ct)",
+      "BUILDING_BASE_LOAD":"Building Base Load",
+      "BUILDING_NET_LOAD":"Building Net Load",
+      "PV_GENERATION":"PV Energy Generation",
+      "CHP_Consumption_Generation":"µCHP Energy Consumption/Generation",
+      "PV_ENERGY":"PV Energy",
+      "CHP_ENERGY":"µCHP Energy"
+
+    }
+}

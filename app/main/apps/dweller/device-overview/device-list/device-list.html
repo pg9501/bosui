@@ -1,0 +1,270 @@
+<div id="eshl-live" class="page-layout simple right-sidenav" layout="row">
+  <div class="center" flex ms-scroll>
+    <!-- HEADER -->
+    <div class="header md-accent-bg" layout="row" layout-align="space-around center">
+      <md-divider flex="10"></md-divider>
+      <div flex="50" layout="row" layout-align="start center" >
+        <img src="assets/images/bos.png" width="10%" height="10%" style="min-width:40px;"/>
+        <div layout="column">
+          <span class="headerFont" >BOS Panel</span>
+          <span class="subHeaderFont" style="margin-top: -5px; margin-left: 1px">Building Operating System GUI</span>
+        </div>
+      </div>
+
+      <div flex="40" layout="row" layout-align="space-around center" >
+        <div flex="40" id="weather" layout="column" layout-align="space-around center" class="timeFont"></div>
+        <div flex="40" layout="column" layout-align="end center" style="margin-left: 0%">
+          <span id="time" class="md-caption timeFont">{{getDate | date:'HH:mm:ss'}}</span>
+          <span id="week" class="md-caption timeFont" style="padding-top: 5%">{{getDate | date:'EEE'}}</span>
+          <span id="date" class="md-caption timeFont" style="padding-top: 5%">{{getDate | date:'dd/MM/yyyy'}}</span>
+        </div>
+        <div flex="20" class="toolbar" style="margin-left: 0%">
+          <md-button class="md-icon-button sidenav-toggle" ng-click="vm.toggleSidenav('sidenav')" hide-gt-md
+                     aria-label="Toggle sidenav">
+            <md-icon md-font-icon="icon-menu" class="icon"></md-icon>
+          </md-button>
+        </div>
+      </div>
+    </div>
+
+    <!-- CONTENT -->
+    <div class="content md-subhead">
+      <md-tabs md-dynamic-height>
+        <md-tab label="{{'DEVICE_LIST.DEVICE_LIST_NAV'|translate}}">
+          <div layout="row"  layout-wrap>
+            <div ng-repeat="device in vm.devices"  layout="row" layout-align="start center" style="width: 280px">
+              <div >
+                <md-button aria-label="md-checkbox" class="imgframe" ng-style="{'background-color':device.power>0?'#FFF8DC':(device.power<0?'lightgreen':'transparent')}" ng-click="vm.showDeviceDetails(device)">
+                  <div >
+                    <img src={{device.url}} width="40px" height="40px" align="center"  />
+                  </div>
+                </md-button>
+              </div>
+              <div style="margin-left: 10px">
+                <div style="font-weight: bold;font-size: medium;font-family: sans-serif">{{device.name}}</div>
+                <div ng-show="device.name.indexOf('Blind')<0&&device.name.indexOf('Light')<0" style="font-size: 14px;font-family: sans-serif">{{'DEVICE_LIST.POWER'|translate}}: {{device.power}} W</div>
+                <div ng-show="device.name.indexOf('Blind')>=0||device.name.indexOf('Light')>=0" style="font-size: 14px;font-family: sans-serif">{{'DEVICE_LIST.FLOOR'|translate}}: {{device.floor}}</div>
+                <div ng-show="device.name.indexOf('Blind')>=0||device.name.indexOf('Light')>=0" style="font-size: 14px;font-family: sans-serif">{{'DEVICE_LIST.ROOM'|translate}}: {{device.room}}</div>
+                <div style="font-size:14px;font-family: sans-serif">{{'DEVICE_LIST.STATUS'|translate}}: {{device.status}}</div>
+              </div>
+            </div>
+          </div>
+          <!--<div layout="row" style="margin-top: 20px">
+            <md-button class="md-accent md-raised" ng-click="vm.switchOnAll()">{{'DEVICE_LIST.ALL_SWITCH_ON'|translate}}</md-button>
+            <md-button class="md-accent md-raised" ng-click="vm.switchOffAll()">{{'DEVICE_LIST.ALL_SWITCH_OFF'|translate}}</md-button>
+          </div>-->
+        </md-tab>
+        <!--<md-tab label="{{'DEVICE_LIST.LOCATION'|translate}}">
+          <div class="device-container">
+
+            <div class="expandcollapse-item" ng-repeat="location in vm.locations">
+              <div ng-click="active = !active" ng-class="{'expandcollapse-heading-collapsed': active, 'expandcollapse-heading-expanded': !active}">
+                <table width="100%">
+                  <tr>
+                    <td width="50%">
+                      <div layout="row" layout-align="start center">
+                        <p>{{location.name}}</p>
+                      </div></td>
+                    <td width="50%"><p style="float: right">{{location.deviceNum}} ( {{location.onDeviceNum}} )</p></td>
+                  </tr>
+                </table>
+              </div>
+
+              <div class="slideDown" ng-hide="active">
+                <div class="expand-collapse-content" layout="row"  layout-wrap>
+                    <div ng-repeat="device in vm.devices" ng-if="device.location === location.name "  layout="row" layout-align="start center" style="width: 280px">
+                      <div >
+                        <md-button aria-label="md-checkbox" class="imgframe" ng-style="{'background-color':device.power>0?'#FFF8DC':(device.power<0?'lightgreen':'transparent')}" ng-click="vm.showDeviceDetails(device)">
+                          <div >
+                            <img src={{device.url}} width="40px" height="40px" align="center"  />
+                          </div>
+                        </md-button>
+                      </div>
+                      <div style="margin-left: 10px">
+                        <div style="font-weight: bold;font-size: medium;font-family: sans-serif">{{device.name}}</div>
+                        <div ng-show="device.name.indexOf('Blind')<0" style="font-size: medium;font-family: sans-serif">{{'DEVICE_LIST.POWER'|translate}}: {{device.power}} W</div>
+                        <div style="font-size: medium;font-family: sans-serif">{{'DEVICE_LIST.STATUS'|translate}}: {{device.status}}</div>
+                      </div>
+                    </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </md-tab>-->
+        <md-tab ng-repeat="floor in vm.floors" label="{{floor.name}}">
+          <div class="device-container">
+
+            <div class="expandcollapse-item" ng-repeat="room in floor.rooms">
+              <div ng-click="active = !active" ng-class="{'expandcollapse-heading-collapsed': active, 'expandcollapse-heading-expanded': !active}">
+                <table width="100%">
+                  <tr>
+                    <td width="50%">
+                      <div layout="row" layout-align="start center">
+                        <p>{{room.name}}</p>
+                      </div></td>
+                    <td width="50%"><p style="float: right">{{room.devices.length}} ( {{room.onDeviceNum}} )</p></td>
+                  </tr>
+                </table>
+              </div>
+
+              <div class="slideDown" ng-hide="active">
+                <div class="expand-collapse-content" layout="row"  layout-wrap>
+                  <div ng-repeat="device in vm.devices" ng-if="device.floor === floor.name && device.room === room.name "  layout="row" layout-align="start center" style="width: 280px">
+                    <div >
+                      <md-button aria-label="md-checkbox" class="imgframe" ng-style="{'background-color':device.power>0?'#FFF8DC':(device.power<0?'lightgreen':'transparent')}" ng-click="vm.showDeviceDetails(device)">
+                        <div >
+                          <img src={{device.url}} width="40px" height="40px" align="center"  />
+                        </div>
+                      </md-button>
+                    </div>
+                    <div style="margin-left: 10px">
+                      <div style="font-weight: bold;font-size: medium;font-family: sans-serif">{{device.name}}</div>
+                      <div ng-show="device.name.indexOf('Blind')<0" style="font-size: medium;font-family: sans-serif">{{'DEVICE_LIST.POWER'|translate}}: {{device.power}} W</div>
+                      <div style="font-size: medium;font-family: sans-serif">{{'DEVICE_LIST.STATUS'|translate}}: {{device.status}}</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </md-tab>
+        <md-tab label="{{'DEVICE_LIST.ENERGY_TYPES'|translate}}">
+
+          <div class="device-container">
+
+            <div class="expandcollapse-item" ng-repeat="type in vm.deviceTypes">
+              <div ng-click="active = !active" ng-class="{'expandcollapse-heading-collapsed': active, 'expandcollapse-heading-expanded': !active}">
+                <table width="100%">
+                  <tr>
+                    <td width="50%">
+                      <div layout="row" layout-align="start center">
+                        <div ng-switch="type.name">
+                          <div ng-switch-when="Power Consumption">
+                            <p>{{'DEVICE_LIST.POWER_CONSUMPTION'|translate}}</p>
+                          </div>
+                          <div ng-switch-when="Power Generation">
+                            <p>{{'DEVICE_LIST.POWER_GENERATION'|translate}}</p>
+                          </div>
+                          <div ng-switch-when="Heat Generation">
+                            <p>{{'DEVICE_LIST.HEAT_GENERATION'|translate}}</p>
+                          </div>
+                          <div ng-switch-when="Cold Generation">
+                            <p>{{'DEVICE_LIST.COLD_GENERATION'|translate}}</p>
+                          </div>
+                          <div ng-switch-when="Gas Consumption">
+                            <p>{{'DEVICE_LIST.GAS_CONSUMPTION'|translate}}</p>
+                          </div>
+                        </div>
+
+                         <!-- <md-button ng-click="vm.switchOnGroupAll(type)" ng-disabled="vm.checkGroupOn(type)" aria-label="Switch On Group">
+                            <md-icon md-font-icon="icon-power" class="md-accent" md-menu-align-target></md-icon>
+                            <md-tooltip>{{'DEVICE_LIST.SWITCH_ON_ALL_TYPE'|translate}}</md-tooltip>
+                            <span>On</span>
+                          </md-button>
+                          <md-button ng-click="vm.switchOffGroupAll(type)" ng-disabled="vm.checkGroupOff(type)" aria-label="Switch Off Group">
+                            <md-icon md-font-icon="icon-power" class="md-accent" md-menu-align-target></md-icon>
+                            <md-tooltip>{{'DEVICE_LIST.SWITCH_OFF_ALL_TYPE'|translate}}</md-tooltip>
+                            <span>Off</span>
+                          </md-button>-->
+                      </div>
+                    </td>
+                    <td width="50%"><p style="float: right">{{type.deviceNum}} ( {{type.onDeviceNum}} )</p></td>
+                  </tr>
+                </table>
+              </div>
+
+              <div class="slideDown" ng-hide="active">
+                <div class="expand-collapse-content" layout="row"  layout-wrap>
+                  <div ng-repeat="device in vm.devices" ng-if="device.type.indexOf(type.name)>=0" layout="row" layout-align="start center" style="width: 280px">
+                    <div >
+                      <md-button aria-label="md-checkbox" class="imgframe" ng-style="{'background-color':device.power>0?'#FFF8DC':(device.power<0?'lightgreen':'transparent')}" ng-click="vm.showDeviceDetails(device)">
+                        <div >
+                          <img src={{device.url}} width="40px" height="40px" align="center"  />
+                        </div>
+                      </md-button>
+                    </div>
+                    <div style="margin-left: 10px">
+                      <div style="font-weight: bold;font-size: medium;font-family: sans-serif">{{device.name}}</div>
+                      <div ng-show="device.name.indexOf('Blind')<0&&device.name.indexOf('Light')<0" style="font-size: medium;font-family: sans-serif">{{'DEVICE_LIST.POWER'|translate}}: {{device.power}} W</div>
+                      <div ng-show="device.name.indexOf('Blind')>=0||device.name.indexOf('Light')>=0" style="font-size: medium;font-family: sans-serif">{{'DEVICE_LIST.LOCATION'|translate}}: {{device.location}}</div>
+                      <div style="font-size: medium;font-family: sans-serif">{{'DEVICE_LIST.STATUS'|translate}}: {{device.status}}</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </md-tab>
+
+        <!--<md-tab label="{{'DEVICE_LIST.CUSTOMIZED_GROUPS'|translate}}">
+
+          <div class="device-container">
+
+            <div class="expandcollapse-item" ng-repeat="group in vm.deviceGroups">
+              <div ng-click="active = !active" ng-class="{'expandcollapse-heading-collapsed': active, 'expandcollapse-heading-expanded': !active}">
+                <table width="100%">
+                  <tr>
+                    <td width="50%">
+                      <div layout="row" layout-align="start center">
+                        <p>{{group.name}}</p>
+                        <md-button ng-click="vm.switchOnGroupAll(group)" ng-disabled="vm.checkGroupOn(group)" aria-label="Switch On Group">
+                          <md-icon md-font-icon="icon-power" class="md-accent" md-menu-align-target></md-icon>
+                          <md-tooltip>{{'DEVICE_LIST.SWITCH_ON_ALL_GROUP'|translate}}</md-tooltip>
+                          <span>On</span>
+                        </md-button>
+                        <md-button ng-click="vm.switchOffGroupAll(group)" ng-disabled="vm.checkGroupOff(group)" aria-label="Switch Off Group">
+                          <md-icon md-font-icon="icon-power" class="md-accent" md-menu-align-target></md-icon>
+                          <md-tooltip>{{'DEVICE_LIST.SWITCH_OFF_ALL_GROUP'|translate}}</md-tooltip>
+                          <span>Off</span>
+                        </md-button>
+                      </div>
+                    </td>
+                    <td width="50%"><p style="float: right">{{group.deviceNum}} ( {{group.onDeviceNum}} )</p></td>
+                  </tr>
+                </table>
+              </div>
+
+              <div class="slideDown" ng-hide="active">
+                <div class="expand-collapse-content" layout="row"  layout-wrap>
+                  <div ng-repeat="device in vm.devices" ng-if="device.group.indexOf(group.name)>=0" layout="row" layout-align="start center" style="width: 280px">
+                    <div >
+                      <md-button aria-label="md-checkbox" class="imgframe" ng-style="{'background-color':device.power>0?'#FFF8DC':(device.power<0?'lightgreen':'transparent')}" ng-click="vm.showDeviceDetails(device)">
+                        <div >
+                          <img src={{device.url}} width="40px" height="40px" align="center"  />
+                        </div>
+                      </md-button>
+                    </div>
+                    <div style="margin-left: 10px">
+                      <div style="font-weight: bold;font-size: medium;font-family: sans-serif">{{device.name}}</div>
+                      <div ng-show="device.name.indexOf('Blind')<0&&device.name.indexOf('Light')<0" style="font-size: medium;font-family: sans-serif">{{'DEVICE_LIST.POWER'|translate}}: {{device.power}} W</div>
+                      <div ng-show="device.name.indexOf('Blind')>=0||device.name.indexOf('Light')>=0" style="font-size: medium;font-family: sans-serif">{{'DEVICE_LIST.LOCATION'|translate}}: {{device.location}}</div>
+                      <div style="font-size: medium;font-family: sans-serif">{{'DEVICE_LIST.STATUS'|translate}}: {{device.status}}</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </md-tab>-->
+      </md-tabs>
+    </div>
+
+  </div>
+
+
+
+</div>
+<script src="assets/lib/jquery.simpleWeather.js"></script>
+<script src="assets/lib/weather.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+<script type="text/javascript">
+
+</script>
+
+

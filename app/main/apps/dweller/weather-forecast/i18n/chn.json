@@ -1,0 +1,12 @@
+{
+    "WEATHER_FORECAST": {
+        "WEATHER_FORECAST_NAV": "天气预报",
+      "TODAY":"今天",
+      "HIGH":"最高温度",
+      "LOW":"最低温度",
+      "HUMIDITY":"湿度",
+      "PRESSURE":"气压",
+      "WIND_SPEED":"风速",
+      "FORECAST":"预报"
+    }
+}

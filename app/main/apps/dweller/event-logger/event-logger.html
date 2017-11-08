@@ -1,0 +1,159 @@
+<div id="eshl-live" class="page-layout simple right-sidenav" layout="row">
+  <div class="center" flex ms-scroll>
+    <!-- HEADER -->
+    <div class="header md-accent-bg" layout="row" layout-align="space-around center">
+      <md-divider flex="10"></md-divider>
+      <div flex="50" layout="row" layout-align="start center" >
+        <img src="assets/images/bos.png" width="10%" height="10%" style="min-width:40px;"/>
+        <div layout="column">
+          <span class="headerFont" >BOS Panel</span>
+          <span class="subHeaderFont" style="margin-top: -5px; margin-left: 1px">Building Operating System GUI</span>
+        </div>
+      </div>
+
+      <div flex="40" layout="row" layout-align="space-around center" >
+        <div flex="40" id="weather" layout="column" layout-align="space-around center" class="timeFont"></div>
+        <div flex="40" layout="column" layout-align="end center" style="margin-left: 0%">
+          <span id="time" class="md-caption timeFont">{{getDate | date:'HH:mm:ss'}}</span>
+          <span id="week" class="md-caption timeFont" style="padding-top: 5%">{{getDate | date:'EEE'}}</span>
+          <span id="date" class="md-caption timeFont" style="padding-top: 5%">{{getDate | date:'dd/MM/yyyy'}}</span>
+        </div>
+        <div flex="20" class="toolbar" style="margin-left: 0%">
+          <md-button class="md-icon-button sidenav-toggle" ng-click="vm.toggleSidenav('sidenav')" hide-gt-md
+                     aria-label="Toggle sidenav">
+            <md-icon md-font-icon="icon-menu" class="icon"></md-icon>
+          </md-button>
+        </div>
+      </div>
+    </div>
+
+    <!-- CONTENT -->
+    <div class="content">
+      <md-tabs md-dynamic-height>
+        <md-tab label="{{'EVENT_LOGGER.EVENT_LOGGER_NAV'|translate}}" >
+          <md-content class="md-padding">
+
+            <!--<div id="event-logger" class="page-layout carded fullwidth" layout="row">
+              <div class="center" layout="column" layout-align="center" flex>
+                <div class="content-card" layout="column" flex>
+                  <div class="content fullpage-datatable" layout="column" flex>
+
+
+                  </div>
+                </div>
+              </div>
+            </div>-->
+            <div layout="column" layout-align="center center" >
+
+           <!-- <div class="search" layout="row" layout-align="center center" style="width: 240px">
+              <md-icon md-font-icon="icon-magnify" class="md-accent"></md-icon>
+              <input id="event-logger-search" class="search-input" type="text" placeholder="Search"
+                     translate translate-attr-placeholder="EVENT_LOGGER.SEARCH" >
+            </div>-->
+
+              <div style="width: 100%">
+
+            <table class="dataTable row-border hover md-subhead" datatable="ng" align="center" dt-instance="vm.dtInstance"
+                   dt-options="vm.dtOptions" >
+              <thead>
+              <tr style="background-color: rgba(0, 0, 0, 0.04)">
+
+                <th class="secondary-text" width="8%">
+                  <div class="table-header">
+                   <!-- <span class="column-title"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span>-->
+                  </div>
+                </th>
+                <th class="secondary-text" width="10%">
+                  <div class="table-header">
+                    <span class="column-title " translate="EVENT_LOGGER.DEVICE">Device</span>
+                  </div>
+                </th>
+                <th class="secondary-text" width="14%">
+                  <div class="table-header">
+                    <span class="column-title" translate="EVENT_LOGGER.LOCATION">Location</span>
+                  </div>
+                </th>
+                <th class="secondary-text" width="11%">
+                  <div class="table-header">
+                    <span class="column-title" translate="EVENT_LOGGER.TIME">Time</span>
+                  </div>
+                </th>
+                <th class="secondary-text" width="14%">
+                  <div class="table-header">
+                    <span class="column-title" translate="EVENT_LOGGER.ACTION">Action</span>
+                  </div>
+                </th>
+                <th class="secondary-text" width="14%">
+                  <div class="table-header">
+                    <span class="column-title" translate="EVENT_LOGGER.OPERATION_MODE">Operation Mode</span>
+                  </div>
+                </th>
+                <th class="secondary-text" width="25%">
+                  <div layout="row" layout-align="space-between center">
+                  <div class="table-header">
+                    <span class="column-title" translate="EVENT_LOGGER.EXECUTOR">Executor</span>
+                  </div>
+
+                  <div class="search" layout="row" layout-align="start center" style="width: 160px; margin-right: 70px">
+                    <md-icon md-font-icon="icon-magnify" class="md-accent"></md-icon>
+                    <input id="event-logger-search" class="search-input" type="text" placeholder="Search"
+                           translate translate-attr-placeholder="EVENT_LOGGER.SEARCH" >
+                  </div>
+                  </div>
+                </th>
+
+
+               <!-- <th class="secondary-text">
+                  <div class="table-header">
+                    <div class="search" layout="row" layout-align="start center">
+                      <md-icon md-font-icon="icon-magnify" class="md-accent icon search-icon"></md-icon>
+                      <input id="event-logger-search" class="search-input" type="text" placeholder="Search"
+                             translate translate-attr-placeholder="EVENT_LOGGER.SEARCH" flex>
+                    </div>
+
+                  </div>
+                </th>-->
+
+              </tr>
+              </thead>
+              <tbody>
+              <tr ng-repeat="event in vm.eventLoggers">
+                <td><img ng-src="{{event.deviceImage}}" class="md-avatar" style="width: 100%;height:auto"/></td>
+                <td>{{event.deviceID}}</td>
+                <td>{{event.location}}</td>
+                <td>{{event.time}}</td>
+                <td>{{event.action}}</td>
+                <td>{{event.operationMode}}</td>
+                <td>{{event.executor}}</td>
+              </tr>
+              </tbody>
+
+            </table>
+              </div>
+            </div>
+
+          </md-content>
+
+        </md-tab>
+      </md-tabs>
+    </div>
+
+  </div>
+
+</div>
+
+
+<!--<script src="bower_components\jquery\dist\jquery.min.js"></script>
+<script src="bower_components\datatables.net\js\jquery.dataTables.js"></script>
+<script src="bower_components\angular\angular.min.js"></script>
+<script src="bower_components\angular-datatables\demo\src\archives\dist\angular-datatables.min.js"></script>-->
+
+
+<script src="assets/lib/jquery.simpleWeather.js"></script>
+<script src="assets/lib/weather.js"></script>
+
+
+
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+<link rel="stylesheet" href="bower_components\angular-datatables\demo\src\archives\dist\css\angular-datatables.css">

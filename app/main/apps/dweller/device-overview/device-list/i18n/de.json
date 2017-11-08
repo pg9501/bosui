@@ -1,0 +1,30 @@
+{
+  "DEVICE_OVERVIEW":{
+    "DEVICE_OVERVIEW_NAV": "Geräteübersicht"
+  },
+    "DEVICE_LIST": {
+        "DEVICE_LIST_NAV": "Geräteliste",
+      "LOCATION": "Standort",
+      "FLOOR": "Etage",
+      "ROOM": "Zimmer",
+      "ENERGY_TYPES": "Energietypen",
+      "CUSTOMIZED_GROUPS": "Kundenspezifische Gruppen",
+      "POWER":"Leistung",
+      "STATUS":"Status",
+      "APPLY":"diesen Freiheitsgrad anwenden",
+      "START_NOW":"jetzt einschalten",
+      "ALL_SWITCH_ON":"Alle einschalten",
+      "ALL_SWITCH_OFF":"Alle ausschalten",
+      "SWITCH_ON_ALL_LOCATION":"Schalte alle Geräte an dieser Stelle ein",
+      "SWITCH_OFF_ALL_LOCATION":"Schalte alle Geräte an dieser Stelle aus",
+      "SWITCH_ON_ALL_GROUP":"Schalte alle Geräte in dieser Gruppe ein",
+      "SWITCH_OFF_ALL_GROUP":"Schalte alle Geräte in dieser Gruppe aus",
+      "SWITCH_ON_ALL_TYPE":"Schalte alle Geräte dieses Typs ein",
+      "SWITCH_OFF_ALL_TYPE":"Schalte alle Geräte dieses Typs aus",
+      "POWER_CONSUMPTION":"Stromverbrauchsgeräte",
+      "POWER_GENERATION":"Stromerzeugungsgeräte",
+      "HEAT_GENERATION":"Wärmeerzeugungsgeräte",
+      "COLD_GENERATION":"Kälteerzeugungsgeräte",
+      "GAS_CONSUMPTION":"Gasverbrauchsgeräte"
+    }
+}

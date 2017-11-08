@@ -1,0 +1,67 @@
+{
+  "COMMUNITY_NAV": "Community",
+    "BUILDING_COMPARISONS": {
+        "BUILDING_COMPARISONS_NAV": "Building Comparisons",
+      "SELECT_A_MONTH":"Select A Month",
+      "COMPARISON_CONTENT":"Comparison Content",
+      "COMPARISON_MODE":"Comparison Mode",
+      "PER_PERSON":"Per Person",
+      "PER_SQUARE_METER":"Per Square Meter",
+      "COMMUNITY":"Community",
+      "GENERATE_COMPARISON_REPORT":"Generate Comparison Report",
+      "ENERGY_CONSUMPTION":"Energy Consumption",
+      "ENERGY_GENERATION":"Energy Generation",
+      "NET_ENERGY_USE":"Net Energy Use",
+      "GREENHOUSE_GAS_EMISSION":"Greenhouse Gas Emission",
+      "BUILDING_ENERGY_COMPARISON":"Building Energy Comparison",
+      "MY_BUILDING":"My Building",
+      "EXPORT_REPORT":"Export this comparison report",
+      "SHARE_REPORT_FACEBOOK":"Share this report in Facebook",
+      "SHARE_REPORT_TWITTER":"Share this report in Twitter",
+      "SHARE_REPORT_GOOGLE":"Share this report in Google Plus",
+      "TIME_PERIOD":"Time Period",
+      "AVERAGE_POWER_IN_BUILDING":"Average power in my building",
+      "AVERAGE_POWER_IN_COMMUNITY":"Average power in the community",
+      "POWER_RANKING":"Power ranking in the community",
+      "AVERAGE_COST_IN_BUILDING":"Average cost in my building",
+      "AVERAGE_COST_IN_COMMUNITY":"Average cost in the community",
+      "COST_RANKING":"Cost ranking in the community"
+    },
+
+  "DEVICE_COMPARISONS": {
+    "DEVICE_COMPARISONS_NAV": "Device Comparisons",
+    "SELECT_A_DEVICE":"Select A Device",
+    "POWER_PER_PERSON":"Power Per Person",
+    "POWER_PER_USAGE":"Power Per Usage",
+    "COST_PER_PERSON":"Cost Per Person",
+    "COST_PER_USAGE":"Cost Per Usage",
+    "DEVICE_ENERGY_COMPARISON":"Device Energy Comparison"
+
+  },
+  "COMMUNITY_OVERVIEW": {
+    "COMMUNITY_OVERVIEW_NAV": "Community Overview",
+    "JOINED_COMMUNITIES": "Joined Communities",
+    "OTHER_COMMUNITIES": "Other Unjoined Communities",
+    "COMMUNITY_NAME":"Community Name",
+    "BUILDINGS_IN_COMMUNITY":"Buildings in the Community",
+    "MORE_INFORMATION":"More Information",
+    "CONNECTION_STATE":"Connection State",
+    "AVAILABLE_ACTIONS":"Available Actions",
+    "DETAILS":"Details",
+    "RESIDENTIAL_BUILDING":"Residential Building",
+    "COMMERCIAL_BUILDING":"Commercial Building",
+    "OFFICE_BUILDING":"Office Building",
+    "CONNECTED":"Connected",
+    "DISCONNECTED":"Disconnected",
+    "TIME_GRANULARITY":"Time Granularity",
+    "FIFTEEN_MINUTES":"15 Minutes",
+    "THIRTY_MINUTES":"30 Minutes",
+    "ONE_HOUR":"1 Hour",
+    "TWO_HOURS":"2 Hours",
+    "LEAVE_COMMUNITY":"Leave the community",
+    "DISCONNECT_COMMUNITY":"Disconnect the community",
+    "CONNECT_COMMUNITY":"Connect the community",
+    "JOIN_COMMUNITY":"Join the community"
+  }
+
+}

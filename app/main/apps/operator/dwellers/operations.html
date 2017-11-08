@@ -1,0 +1,51 @@
+<md-dialog aria-label="Operations" flex="50">
+  <form ng-cloak>
+    <md-toolbar class="md-accent">
+      <div class="md-toolbar-tools">
+        <h2>{{'OPERATIONS'|translate}}</h2>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="cancel()">
+          <md-icon md-svg-src="assets/images/svg/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
+        </md-button>
+      </div>
+    </md-toolbar>
+
+    <md-dialog-content>
+      <div class="md-dialog-content">
+
+
+
+        <div flex-xs flex="50">
+          <md-checkbox aria-label="Select All"
+                       ng-checked="isChecked()"
+                       md-indeterminate="isIndeterminate()"
+                       ng-click="toggleAll()">
+            <span ng-if="isChecked()">{{'DWELLERS.UN'|translate}}-</span>{{'DWELLERS.SELECT_ALL'|translate}}
+          </md-checkbox>
+        </div>
+
+        <div layout="column" layout-align="start" flex style="margin-left: 15px">
+          <div ng-repeat="operation in operations">
+
+            <md-checkbox ng-checked="exists(operation)" ng-disabled="checkDisabled(operation)" ng-click="toggle(operation)">
+                <div style="font-weight: bold;font-size: medium;font-family: sans-serif">{{operation}}</div>
+            </md-checkbox>
+
+            </div>
+          </div>
+
+      </div>
+    </md-dialog-content>
+
+    <md-dialog-actions layout="row">
+
+      <span flex></span>
+      <md-button ng-click="cancel()" class="md-accent">
+        {{'DWELLERS.CANCEL'|translate}}
+      </md-button>
+      <md-button ng-click="save()" class="md-accent">
+        {{'DWELLERS.SAVE'|translate}}
+      </md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>

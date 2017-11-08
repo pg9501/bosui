@@ -1,0 +1,21 @@
+{
+    "SCENES": {
+      "SCENES_NAV": "Scenes",
+      "SCENE":"Scene",
+      "DEVICE":"Device",
+      "LOCATION":"Location",
+      "AVAILABLE_ACTIONS":"Available Actions",
+      "TARGET_STATE":"Target State",
+      "REMOVE_THIS_SCENE":"Remove this scene",
+      "ADD_A_NEW_SCENE":"Add a new scene",
+      "REMOVE_THIS_DEVICE":"Remove this device",
+      "TRIGGER_THIS_SCENE":"Trigger this scene",
+      "ADD_NEW_DEVICES_TO_THE_SCENE":"Add new devices to the scene",
+      "SELECT_A_DEVICE":"Select a device",
+      "ADD":"Add",
+      "CANCEL":"Cancel",
+      "SELECT_FLOOR":"Select a floor",
+      "SELECT_ROOM":"Select a room",
+      "SELECT_DEVICES":"Select devices"
+    }
+}

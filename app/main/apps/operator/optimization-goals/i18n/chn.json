@@ -1,0 +1,8 @@
+{
+  "OPTIMIZATION_NAV": "优化",
+    "OPTIMIZATION_GOALS": {
+        "OPTIMIZATION_GOALS_NAV": "优化目标",
+      "TIP": "请为下面的优化目标设置权重",
+      "SAVE":"保存"
+    }
+}

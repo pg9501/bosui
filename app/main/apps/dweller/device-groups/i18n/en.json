@@ -1,0 +1,31 @@
+{
+    "DEVICE_GROUPS": {
+        "DEVICE_GROUPS_NAV": "Device Groups"
+    },
+  "SB": {
+    "ALL_SWITCH_ON":"All Switch On",
+    "ALL_SWITCH_OFF":"All Switch Off",
+    "ALL_OPEN":"All Open",
+    "ALL_CLOSE":"All Close",
+    "SELECT_A_DEVICE":"Select a device",
+    "INPUT_A_GROUP_NAME":"Input a group name",
+    "SAVE":"Save",
+    "CANCEL":"Cancel",
+    "SETTINGS": "Settings",
+    "CALENDAR": "Calendar",
+    "OPTIONS": "Options",
+    "REMOVE_LIST": "Remove List",
+    "REMOVE_DEVICE": "Remove Device",
+    "ADD_A_DEVICE": "Add a device",
+    "ADD_A_LIST": "Click to add a device group",
+    "ADD":"Add",
+    "CANCEL":"Cancel",
+    "STATE":"State",
+    "POWER":"Power",
+    "LOCATION":"Location",
+    "SET_STATE_FOR_GROUP":"Set state for all devices in this group:",
+    "ERRORS": {
+      "TITLE_REQUIRED": "Title field is required"
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "DEVICES_ADMIN": {
+    "DEVICES_NAV": "设备",
+    "ALL_DEVICES": "全部设备",
+    "LOCATIONS": "地点",
+    "LOCATION":"地点",
+    "SELECT_A_LOCATION":"选择一个地点",
+    "SAVE":"保存",
+    "DETAILS":"详情",
+    "SAVE":"保存",
+    "UNSIGNED_DEVICES":"未分配的设备",
+    "REMOVE_DEVICES":"移除设备",
+    "FLOOR":"楼层",
+    "ROOM":"房间",
+    "ASSIGN":"分配"
+  }
+}

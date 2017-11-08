@@ -1,0 +1,14 @@
+{
+    "FLOOR_PLAN": {
+        "FLOOR_PLAN_NAV": "Gebäudeplan",
+      "REMOVE_CURRENT_FLOOR_PLAN":"Aktuellen Gebäudeplan Entfernen",
+      "UPLOAD_FLOOR_PLAN":"Einen Gebäudeplan hochladen",
+      "SHOW_DEVICE_LIBRARY":"Gerätebibliothek anzeigen",
+      "HIDE_DEVICE_LIBRARY":"Gerätebibliothek ausblenden",
+      "ADD_NEW_DEVICES":"Neue Geräte hinzufügen",
+      "ADD_NEW_FLOOR":"Eines neuen Boden Hinzufügen",
+      "FLOOR_NAME":"Boden Name",
+      "ADD":"Hinzufügen",
+      "SHOW_DEVICE_PANEL":"Gerätedisplay anzeigen"
+    }
+}

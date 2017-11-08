@@ -1,0 +1,25 @@
+{
+
+  "PERSON_HISTORY": {
+    "PERSON_HISTORY_NAV": "Persönliche Geschichte",
+    "YESTERDAY":"Gestern",
+    "LAST_THREE_DAYS":"Die letzten drei Tage",
+    "LAST_WEEK":"Letzte Woche",
+    "LAST_MONTH":"Letzten Monat",
+    "PERSONAL_ENERGY_CONSUMPTION":"Persönlicher Energieverbrauch",
+    "COMMUNITY_AVERAGE_ENERGY_CONSUMPTION":"Gemeinschaftlicher durchschnittlicher Energieverbrauch",
+    "RANKING_IN_THE_COMMUNITY":"Ranking in der Gemeinschaft",
+    "PERSONAL_ENERGY_CONSUMPTION_COST":"Personal Energieverbrauch Kosten",
+    "COMMUNITY_AVERAGE_ENERGY_CONSUMPTION_COST":"Gemeinschaftlicher durchschnittlicher Energieverbrauch Kosten",
+    "POWER_UPPER_LIMIT":"Leistungsobergrenze",
+    "POWER_LOWER_LIMIT":"Leistungsuntergrenze",
+    "PV_FEED_IN_PRICE":"PV-Einspeisepreis",
+    "CHP_FEED_IN_PRICE":"CHP-Einspeisepreis",
+    "ENERGY_CONSUMPTION":"Energieverbrauch",
+    "EXTERNAL_POWER_PRICE":"Externer Strompreis",
+    "PERSONAL_POWER_CONSUMPTION":"Persönlicher Stromverbrauch",
+    "SELECT_A_COMMUNITY":"Eine Gemeinschaft auswählen",
+    "POWER":"Leistung(W)",
+    "TARIFF":"Tarif(ct)"
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "DWELLERS_NAV": "居住者",
+  "DEVICES": "设备",
+  "OPERATIONS": "操作",
+    "DWELLERS": {
+        "ALL_DWELLERS_NAV": "修改居住者",
+      "ADD_DWELLERS_NAV":"添加居住者",
+      "SELECT_A_DWELLER":"选择一个居住者",
+      "NAME":"名字",
+      "EDIT_THIS_DWELLER":"编辑这个居住者",
+      "REMOVE_THIS_DWELLER":"移除这个居住者",
+      "PASSWORD":"密码",
+      "PHONE":"电话",
+      "EMAIL":"邮箱",
+      "NOTE":"备注",
+      "PERMISSION":"权限",
+      "PERMISSIONS":"权限",
+      "DEVICES":"设备",
+      "OPERATIONS":"操作",
+      "STEP_1":"步骤 1: 个人信息",
+      "INITIAL_PASSWORD":"初始密码",
+      "PHONE_NUMBER":"电话号码",
+      "PERSONAL_NOTE":"个人备注",
+      "NEXT_STEP":"下一步",
+      "STEP_2":"步骤 2: 权限",
+      "REMOVE_THIS_PERMISSION":"移除这个权限",
+      "ADD_PERMISSION":"添加一个新权限",
+      "PERSONAL_INFORMATION":"个人信息",
+      "ASSIGNED_PERMISSIONS":"分配权限",
+      "FINISH_CHECK_SUBMIT":"结束: 检查 & 提交",
+      "SUBMIT":"提交",
+      "SELECT_ALL":"全选",
+      "UN":"不",
+      "SAVE":"保存",
+      "CANCEL":"取消",
+      "ERRORS":{
+        "USERNAME_REQUIRED":"请填写用户名",
+        "PASSWORD_REQUIRED":"请填写初始密码",
+        "VALID_PHONE_NUMBER_REQUIRED":"请填写有效的电话号码",
+        "VALID_EMAIL_REQUIRED":"请填写有效的邮箱"
+      }
+    },
+  "ADD_DWELLERS": {
+    "ADD_DWELLERS_NAV": "添加居住者"
+  }
+}

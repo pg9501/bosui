@@ -1,0 +1,354 @@
+<div id="eshl-live" class="page-layout simple right-sidenav" layout="row">
+  <div class="center" flex ms-scroll>
+    <!-- HEADER -->
+    <div class="header md-accent-bg" layout="row" layout-align="space-around center">
+      <md-divider flex="10"></md-divider>
+      <div flex="50" layout="row" layout-align="start center" >
+        <img src="assets/images/bos.png" width="10%" height="10%" style="min-width:40px;"/>
+        <div layout="column">
+          <span class="headerFont" >BOS Panel</span>
+          <small class="subHeaderFont" style="margin-top: -5px; margin-left: 1px">Building Operating System GUI</small>
+        </div>
+      </div>
+
+      <div flex="40" layout="row" layout-align="space-around center" >
+        <div flex="40" id="weather" layout="column" layout-align="space-around center" class="timeFont"></div>
+        <div flex="40" layout="column" layout-align="end center" style="margin-left: 0%">
+          <span id="time" class="md-caption timeFont">{{getDate | date:'HH:mm:ss'}}</span>
+          <span id="week" class="md-caption timeFont" style="padding-top: 5%">{{getDate | date:'EEE'}}</span>
+          <span id="date" class="md-caption timeFont" style="padding-top: 5%">{{getDate | date:'dd/MM/yyyy'}}</span>
+        </div>
+        <div flex="20" class="toolbar" style="margin-left: 0%">
+          <md-button class="md-icon-button sidenav-toggle" ng-click="vm.toggleSidenav('sidenav')" hide-gt-md
+                     aria-label="Toggle sidenav">
+            <md-icon md-font-icon="icon-menu" class="icon"></md-icon>
+          </md-button>
+        </div>
+      </div>
+    </div>
+
+    <!-- CONTENT -->
+    <div class="content">
+      <md-tabs md-dynamic-height>
+        <md-tab label="{{'DWELLERS.ALL_DWELLERS_NAV'|translate}}" >
+          <md-card >
+            <md-card-content>
+              <div layout="row" layout-align="start center">
+                <span style="font-size: medium;font-family: sans-serif;">{{'DWELLERS.SELECT_A_DWELLER'|translate}}: </span>
+                <div flex="15" style="margin-left: 10px">
+                  <md-input-container style="width: 100%">
+                    <label>{{'DWELLERS.NAME'|translate}}</label>
+                    <md-select ng-model="vm.selectedDweller" ng-change="vm.changeDweller()">
+                      <md-option ng-repeat="dweller in vm.dwellers" ng-value="dweller.name">
+                        {{dweller.name}}
+                      </md-option>
+                    </md-select>
+                  </md-input-container>
+                </div>
+
+                  <md-button class="md-icon-button" ng-click="vm.editDweller(vm.selectedDweller)" ng-disabled="vm.selectedDweller==''">
+                    <md-icon md-font-icon="icon-pencil-box-outline" class="md-accent" >
+                      <md-tooltip>{{'DWELLERS.EDIT_THIS_DWELLER'|translate}}</md-tooltip>
+                    </md-icon>
+                  </md-button>
+
+                  <md-button class="md-icon-button" ng-disabled="vm.selectedDweller==''" ng-click="vm.removeDweller($event,vm.selectedDweller)">
+                  <md-icon md-font-icon="icon-delete" class="md-accent" >
+                    <md-tooltip>{{'DWELLERS.REMOVE_THIS_DWELLER'|translate}}</md-tooltip>
+                  </md-icon>
+                  </md-button>
+
+
+              </div>
+            </md-card-content>
+          </md-card>
+
+          <md-card >
+            <md-card-content>
+              <form layout="column" layout-align="start" ng-show="!vm.isEdit">
+                <md-list flex>
+                  <md-subheader class="md-no-sticky">{{'DWELLERS.PERSONAL_INFORMATION'|translate}}</md-subheader>
+                  <md-list-item>
+                    <div  layout="column" layout-align="start start" style="margin-left: 15px; ">
+                      <div layout="row" style="font-size: medium;font-family: sans-serif;margin-bottom: 10px">
+                        <md-icon md-font-icon="icon-account-outline" class="md-accent"></md-icon>
+                        <span style="margin-left: 10px">{{'DWELLERS.NAME'|translate}}: </span>
+                        <span style="margin-left: 10px">{{vm.newDweller.name}} </span>
+                      </div>
+
+                      <div layout="row" style="font-size: medium;font-family: sans-serif;margin-bottom: 10px">
+                        <md-icon md-font-icon="icon-lock" class="md-accent"></md-icon>
+                        <span style="margin-left: 10px">{{'DWELLERS.PASSWORD'|translate}}: </span>
+                        <span style="margin-left: 10px">{{vm.newDweller.password}} </span>
+                      </div>
+
+                      <div layout="row" style="font-size: medium;font-family: sans-serif;margin-bottom: 10px">
+                        <md-icon md-font-icon="icon-phone" class="md-accent"></md-icon>
+                        <span style="margin-left: 10px">{{'DWELLERS.PHONE'|translate}}: </span>
+                        <span style="margin-left: 10px">{{vm.newDweller.phone}} </span>
+                      </div>
+
+                      <div layout="row" style="font-size: medium;font-family: sans-serif;margin-bottom: 10px">
+                        <md-icon md-font-icon="icon-email" class="md-accent"></md-icon>
+                        <span style="margin-left: 10px">{{'DWELLERS.EMAIL'|translate}}: </span>
+                        <span style="margin-left: 10px">{{vm.newDweller.email}} </span>
+                      </div>
+
+                      <div layout="row" style="font-size: medium;font-family: sans-serif;margin-bottom: 10px">
+                        <md-icon md-font-icon="icon-note-outline" class="md-accent"></md-icon>
+                        <span style="margin-left: 10px">{{'DWELLERS.NOTE'|translate}}: </span>
+                        <span style="margin-left: 10px">{{vm.newDweller.note}} </span>
+                      </div>
+                    </div>
+                  </md-list-item>
+                  <md-divider ></md-divider>
+                  <md-subheader class="md-no-sticky">{{'DWELLERS.ASSIGNED_PERMISSIONS'|translate}}</md-subheader>
+                  <md-list-item ng-repeat="permission in vm.newDweller.permissions">
+
+                    <!-- <div class="md-no-sticky">Permission:</div>-->
+                    <div layout="column" layout-align="start start" style="margin-bottom: 10px">
+                      <md-subheader >{{'DWELLERS.PERMISSIONS'|translate}} {{$index +1}}:</md-subheader>
+                      <div  layout="column" layout-align="start start" style="margin-left: 15px; ">
+                        <div  layout="row" layout-align="start start" style="font-size: medium;font-family: sans-serif;margin-bottom: 10px">
+                          <div layout="row" layout-align="center">
+                            <md-icon md-font-icon="icon-xbox-controller" class="md-accent"></md-icon>
+                            <label style="margin-left: 10px">{{'DWELLERS.DEVICES'|translate}}:</label>
+                          </div>
+
+                          <span style="margin-left: 10px">{{vm.convertArrToStr(permission.devices)}} </span>
+                        </div>
+
+                        <div layout="row" layout-align="start start" style="font-size: medium;font-family: sans-serif">
+                          <div layout="row" layout-align="center">
+                            <md-icon md-font-icon="icon-cog" class="md-accent"></md-icon>
+                            <label style="margin-left: 10px">{{'DWELLERS.OPERATIONS'|translate}}:</label>
+                          </div>
+                          <span style="margin-left: 10px">{{vm.convertArrToStr(permission.operations)}} </span>
+                        </div>
+
+                      </div>
+                    </div>
+
+
+                  </md-list-item>
+                </md-list>
+              </form>
+
+              <md-steppers md-dynamic-height md-selected="vm.selectedStep_updateDweller" md-stretch-steppers="always" ng-show="vm.isEdit">
+                <md-step label="{{'DWELLERS.STEP_1'|translate}}"  md-complete="vm.stepper_updateDweller.step1.completed"  ng-disabled="false" >
+                  <md-content class="md-padding">
+
+                    <form name="personalInfoForm1" layout="column" layout-align="center" style="padding: 10px">
+
+                      <md-input-container >
+                        <!-- Use floating label instead of placeholder -->
+                        <label>{{'DWELLERS.NAME'|translate}}</label>
+                        <md-icon md-font-icon="icon-account-outline" class="md-accent"></md-icon>
+                        <input ng-model="vm.newDweller.name" name="username" type="text" required>
+                        <div ng-messages="personalInfoForm1.username.$error">
+                          <div ng-message="required">{{'DWELLERS.ERRORS.USERNAME_REQUIRED'|translate}}</div>
+                        </div>
+                      </md-input-container>
+
+                      <md-input-container >
+                        <!-- Use floating label instead of placeholder -->
+                        <label>{{'DWELLERS.INITIAL_PASSWORD'|translate}}</label>
+                        <md-icon md-font-icon="icon-lock" class="md-accent"></md-icon>
+                        <input ng-model="vm.newDweller.password" name="password" type="text" required>
+                        <div ng-messages="personalInfoForm1.password.$error">
+                          <div ng-message="required">{{'DWELLERS.ERRORS.PASSWORD_REQUIRED'|translate}}</div>
+                        </div>
+                      </md-input-container>
+
+                      <md-input-container md-no-float >
+                        <label>{{'DWELLERS.PHONE_NUMBER'|translate}}</label>
+                        <md-icon md-font-icon="icon-phone" class="md-accent"></md-icon>
+                        <input ng-model="vm.newDweller.phone" name="phone" type="text" ng-pattern="/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/" ng-required="false" maxlength="15" minlength="4">
+                        <div ng-messages="personalInfoForm1.phone.$error">
+                          <div ng-message="pattern">{{'DWELLERS.ERRORS.VALID_PHONE_NUMBER_REQUIRED'|translate}}</div>
+                          <div ng-message="maxlength">{{'DWELLERS.ERRORS.VALID_PHONE_NUMBER_REQUIRED'|translate}}</div>
+                          <div ng-message="minlength">{{'DWELLERS.ERRORS.VALID_PHONE_NUMBER_REQUIRED'|translate}}</div>
+                        </div>
+                      </md-input-container>
+
+                      <md-input-container md-no-float >
+                        <!-- Use floating placeholder instead of label -->
+                        <label>{{'DWELLERS.EMAIL'|translate}}</label>
+                        <md-icon md-font-icon="icon-email" class="md-accent"></md-icon>
+                        <input ng-model="vm.newDweller.email" name="email" type="email" ng-required="false">
+                        <div ng-messages="personalInfoForm1.email.$error">
+                          <div ng-message="email">{{'DWELLERS.ERRORS.VALID_EMAIL_REQUIRED'|translate}}</div>
+                        </div>
+                      </md-input-container>
+
+                      <md-input-container md-no-float >
+                        <!-- Use floating placeholder instead of label -->
+                        <label>{{'DWELLERS.PERSONAL_NOTE'|translate}}</label>
+                        <md-icon md-font-icon="icon-note-outline" class="md-accent"></md-icon>
+                        <input ng-model="vm.newDweller.note" type="text" ng-required="false">
+                      </md-input-container>
+                      <md-button class="md-accent" ng-click="vm.goToStep2_updateDweller()" ng-disabled="personalInfoForm1.$invalid">{{'DWELLERS.NEXT_STEP'|translate}}</md-button>
+                    </form>
+
+
+                  </md-content>
+                </md-step>
+                <md-step label="{{'DWELLERS.STEP_2'|translate}}" md-complete="vm.stepper_updateDweller.step2.completed"  ng-disabled="vm.stepper_updateDweller.step2.disabled">
+                  <md-content class="md-padding">
+                    <form name="permissionForm1" layout="column" layout-align="start">
+                      <md-list flex>
+                        <md-list-item class="md-2-line" ng-repeat="permission in vm.newDweller.permissions">
+
+                          <!-- <div class="md-no-sticky">Permission:</div>-->
+                          <fieldset class="permission-fieldset" flex>
+                            <legend >{{'DWELLERS.PERMISSION'|translate}} {{$index +1}}
+                              <md-button aria-label="md-button" style="width: auto" ng-click="vm.deletePermission(vm.newDweller,permission)">
+                                <md-icon md-font-icon="icon-delete" class="md-accent" ></md-icon>
+                                <md-tooltip>{{'DWELLERS.REMOVE_THIS_PERMISSION'|translate}}</md-tooltip>
+                              </md-button>
+                            </legend>
+                            <div class="md-list-item-text md-padding" layout="column" >
+                              <div layout="row" layout-align="start center">
+                                <md-input-container md-no-float flex >
+                                  <!-- Use floating placeholder instead of label -->
+                                  <label>{{'DWELLERS.DEVICES'|translate}}</label>
+                                  <md-icon md-font-icon="icon-xbox-controller" class="md-accent"></md-icon>
+                                  <input ng-model="permission.devices" type="text" required ng-disabled="true">
+                                </md-input-container>
+                                <!--<md-button class="md-icon-button" aria-label="md-button">
+                                  <md-icon md-font-icon="icon-pencil-box-outline" class="md-accent" ng-click="vm.showDevices($event,permission)"></md-icon>
+                                </md-button>-->
+                                <md-button class="md-icon-button" aria-label="md-button" ng-click="vm.showDevices($event,permission)">
+                                  <md-icon md-font-icon="icon-pencil-box-outline" class="md-accent" ></md-icon>
+                                </md-button>
+                              </div>
+                              <div layout="row" layout-align="start center">
+                                <md-input-container md-no-float flex>
+                                  <!-- Use floating placeholder instead of label -->
+                                  <label>{{'DWELLERS.OPERATIONS'|translate}}</label>
+                                  <md-icon md-font-icon="icon-cog" class="md-accent"></md-icon>
+                                  <input ng-model="permission.operations" type="text" required ng-disabled="true">
+                                </md-input-container>
+                                <md-button class="md-icon-button" aria-label="md-button" ng-click="vm.showOperations($event,permission)">
+                                  <md-icon md-font-icon="icon-pencil-box-outline" class="md-accent" ></md-icon>
+                                </md-button>
+                              </div>
+                            </div>
+                          </fieldset>
+
+
+                        </md-list-item>
+
+                        <md-button class="md-accent"  ng-click="vm.addPermission(vm.newDweller)">{{'DWELLERS.ADD_PERMISSION'|translate}}</md-button>
+                      </md-list>
+
+
+                      <md-button class="md-accent" ng-click="vm.goToStep3_updateDweller()" ng-disabled="permissionForm1.$invalid">{{'DWELLERS.NEXT_STEP'|translate}}</md-button>
+                    </form>
+                  </md-content>
+                </md-step>
+                <md-step label="{{'DWELLERS.FINISH_CHECK_SUBMIT'|translate}}" md-complete="vm.stepper_updateDweller.step3.completed"  ng-disabled="vm.stepper_updateDweller.step3.disabled">
+                  <md-content class="md-padding">
+                    <form layout="column" layout-align="start">
+                      <md-list flex>
+                        <md-subheader class="md-no-sticky">{{'DWELLERS.PERSONAL_INFORMATION'|translate}}</md-subheader>
+                        <md-list-item>
+                          <div  layout="column" layout-align="start start" style="margin-left: 15px; ">
+                            <div layout="row" style="font-size: medium;font-family: sans-serif;margin-bottom: 10px">
+                              <md-icon md-font-icon="icon-account-outline" class="md-accent"></md-icon>
+                              <span style="margin-left: 10px">{{'DWELLERS.NAME'|translate}}: </span>
+                              <span style="margin-left: 10px">{{vm.newDweller.name}} </span>
+                            </div>
+
+                            <div layout="row" style="font-size: medium;font-family: sans-serif;margin-bottom: 10px">
+                              <md-icon md-font-icon="icon-lock" class="md-accent"></md-icon>
+                              <span style="margin-left: 10px">{{'DWELLERS.PASSWORD'|translate}}: </span>
+                              <span style="margin-left: 10px">{{vm.newDweller.password}} </span>
+                            </div>
+
+                            <div layout="row" style="font-size: medium;font-family: sans-serif;margin-bottom: 10px">
+                              <md-icon md-font-icon="icon-phone" class="md-accent"></md-icon>
+                              <span style="margin-left: 10px">{{'DWELLERS.PHONE'|translate}}: </span>
+                              <span style="margin-left: 10px">{{vm.newDweller.phone}} </span>
+                            </div>
+
+                            <div layout="row" style="font-size: medium;font-family: sans-serif;margin-bottom: 10px">
+                              <md-icon md-font-icon="icon-email" class="md-accent"></md-icon>
+                              <span style="margin-left: 10px">{{'DWELLERS.EMAIL'|translate}}: </span>
+                              <span style="margin-left: 10px">{{vm.newDweller.email}} </span>
+                            </div>
+
+                            <div layout="row" style="font-size: medium;font-family: sans-serif;margin-bottom: 10px">
+                              <md-icon md-font-icon="icon-note-outline" class="md-accent"></md-icon>
+                              <span style="margin-left: 10px">{{'DWELLERS.NOTE'|translate}}: </span>
+                              <span style="margin-left: 10px">{{vm.newDweller.note}} </span>
+                            </div>
+                          </div>
+                        </md-list-item>
+                        <md-divider ></md-divider>
+                        <md-subheader class="md-no-sticky">{{'DWELLERS.ASSIGNED_PERMISSIONS'|translate}}</md-subheader>
+                        <md-list-item ng-repeat="permission in vm.newDweller.permissions">
+
+                          <!-- <div class="md-no-sticky">Permission:</div>-->
+                          <div layout="column" layout-align="start start" style="margin-bottom: 10px">
+                            <md-subheader >{{'DWELLERS.PERMISSION'|translate}} {{$index +1}}:</md-subheader>
+                            <div  layout="column" layout-align="start start" style="margin-left: 15px; ">
+                              <div  layout="row" layout-align="start start" style="font-size: medium;font-family: sans-serif;margin-bottom: 10px">
+                                <div layout="row" layout-align="center">
+                                  <md-icon md-font-icon="icon-xbox-controller" class="md-accent"></md-icon>
+                                  <label style="margin-left: 10px">{{'DWELLERS.DEVICES'|translate}}:</label>
+                                </div>
+
+                                <span style="margin-left: 10px">{{vm.convertArrToStr(permission.devices)}} </span>
+                              </div>
+
+                              <div layout="row" layout-align="start start" style="font-size: medium;font-family: sans-serif">
+                                <div layout="row" layout-align="center">
+                                  <md-icon md-font-icon="icon-cog" class="md-accent"></md-icon>
+                                  <label style="margin-left: 10px">{{'DWELLERS."OPERATIONS'|translate}}:</label>
+                                </div>
+                                <span style="margin-left: 10px">{{vm.convertArrToStr(permission.operations)}} </span>
+                              </div>
+
+                            </div>
+                          </div>
+
+
+                        </md-list-item>
+                      </md-list>
+
+                      <md-button class="md-accent" ng-click="vm.submit_updateDweller()">{{'DWELLERS.SUBMIT'|translate}}</md-button>
+                    </form>
+                  </md-content>
+                </md-step>
+              </md-steppers>
+            </md-card-content>
+          </md-card>
+
+        </md-tab>
+      </md-tabs>
+
+
+
+    </div>
+
+  </div>
+
+
+
+</div>
+<script src="assets/lib/jquery.simpleWeather.js"></script>
+<script src="assets/lib/weather.js"></script>
+
+<script type="text/javascript">
+
+</script>
+
+<style>
+  fieldset{
+    background: #FCFCFC;
+    padding: 16px;
+    border: 1px solid #D5D5D5;
+  }
+
+</style>

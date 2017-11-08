@@ -1,0 +1,2 @@
+<md-switch class="md-accent " ng-if="deviceInScene.targetState.indexOf('ON')>-1" ng-model="switchState" ng-init="switchState=true"  aria-label="Switch" ng-change="vm.switchChange(switchState,deviceInScene,action)"></md-switch>
+<md-switch class="md-accent " ng-if="deviceInScene.targetState.indexOf('OFF')>-1 || deviceInScene.targetState.indexOf('???')>=0"  ng-model="switchState" ng-init="switchState=false" aria-label="Switch" ng-change="vm.switchChange(switchState,deviceInScene,action)"></md-switch>

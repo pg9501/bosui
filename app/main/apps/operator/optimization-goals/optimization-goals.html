@@ -1,0 +1,90 @@
+<div id="eshl-live" class="page-layout simple right-sidenav" layout="row">
+  <div class="center" flex ms-scroll>
+    <!-- HEADER -->
+    <div class="header md-accent-bg" layout="row" layout-align="space-around center">
+      <md-divider flex="10"></md-divider>
+      <div flex="50" layout="row" layout-align="start center" >
+        <img src="assets/images/bos.png" width="10%" height="10%" style="min-width:40px;"/>
+        <div layout="column">
+          <span class="headerFont" >BOS Panel</span>
+          <small class="subHeaderFont" style="margin-top: -5px; margin-left: 1px">Building Operating System GUI</small>
+        </div>
+      </div>
+
+      <div flex="40" layout="row" layout-align="space-around center" >
+        <div flex="40" id="weather" layout="column" layout-align="space-around center" class="timeFont"></div>
+        <div flex="40" layout="column" layout-align="end center" style="margin-left: 0%">
+          <span id="time" class="md-caption timeFont">{{getDate | date:'HH:mm:ss'}}</span>
+          <span id="week" class="md-caption timeFont" style="padding-top: 5%">{{getDate | date:'EEE'}}</span>
+          <span id="date" class="md-caption timeFont" style="padding-top: 5%">{{getDate | date:'dd/MM/yyyy'}}</span>
+        </div>
+        <div flex="20" class="toolbar" style="margin-left: 0%">
+          <md-button class="md-icon-button sidenav-toggle" ng-click="vm.toggleSidenav('sidenav')" hide-gt-md
+                     aria-label="Toggle sidenav">
+            <md-icon md-font-icon="icon-menu" class="icon"></md-icon>
+          </md-button>
+        </div>
+      </div>
+    </div>
+
+    <!-- CONTENT -->
+    <div class="content">
+      <md-tabs md-dynamic-height>
+        <md-tab label="{{'OPTIMIZATION_GOALS.OPTIMIZATION_GOALS_NAV'|translate}}" >
+          <md-content class="md-padding">
+            <div layout="column" flex="60">
+              <span class="md-title " ng-style="{ 'color': vm.activeTheme.accent.color}" >{{'OPTIMIZATION_GOALS.TIP'|translate}}:</span>
+              <div ng-repeat="goal in vm.optimizationGoals" style="margin-left: 50px">
+                <!--<h2 class="md-subhead " ng-style="{ 'color': vm.activeTheme.accent.color}" >{{goal.name}}:</h2>-->
+                <div layout="row" layout-align="start center" flex>
+                  <div flex="35" style="margin-top: 20px">
+                    <h2 class="md-subhead ">{{goal.name}}:</h2>
+                  </div>
+                  <div flex="65">
+                    <!--<slider-widget goal="goal" changed="vm.changed"></slider-widget>-->
+                    <!--<div layout="row" layout-align="start center">
+                    <md-slider-container style="width: 200px;margin-bottom: -20px">
+                      <md-slider flex min="{{goal.widget.min_value}}" max="{{vm.maxValues[$index]}}" step="{{goal.widget.step}}" ng-model="vm.values[$index]" aria-label="red" id="goal-slider" ng-change="vm.change($index,vm.values[$index])">
+                        </md-slider>
+
+                      </md-slider-container>
+                    <label style="margin-left: 10px;">Weight: <u>{{vm.values[$index]}}</u></label>
+                    </div>-->
+                    <rzslider rz-slider-model="vm.sliders[$index].value"
+                              rz-slider-options="vm.sliders[$index].options" ></rzslider>
+                  </div>
+
+                </div>
+              </div>
+             <!-- <div layout="row" layout-align="center">
+                <md-button class="md-accent md-raised"  ng-click="vm.update(vm.optimizationGoals)" ng-disabled="!vm.changed">{{'OPTIMIZATION_GOALS.SAVE'|translate}}</md-button>
+              </div>-->
+            </div>
+
+
+          </md-content>
+
+
+
+        </md-tab>
+      </md-tabs>
+
+
+
+    </div>
+
+  </div>
+
+
+
+</div>
+<script src="assets/lib/jquery.simpleWeather.js"></script>
+<script src="assets/lib/weather.js"></script>
+
+<script type="text/javascript">
+
+</script>
+
+<style>
+
+</style>

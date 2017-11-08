@@ -1,0 +1,18 @@
+{
+  "BUILDING_CONFIGURATION_NAV": "Gebäudekonfiguration",
+    "LOCATIONS": {
+        "LOCATIONS_NAV": "Standorte",
+      "LOCATION_MANAGEMENT": "Standortmanagement",
+      "SAVE":"speichern",
+      "CANCEL":"abbrechen",
+      "REMOVE":"entfernen",
+      "ADD":"hinzufügen",
+      "ADD_A_LOCATION":"Einen Standort hinzufügen",
+      "ENTER_A_ROOM_NAME":"Einen Raumsnamen eingeben",
+      "ENTER_A_FLOOR_NAME":"eines Etagennamens eingeben",
+      "REMOVE_FLOOR":"Diesen Boden entfernen",
+      "REMOVE_ROOM":"Diesen Raum entfernen",
+      "ADD_A_FLOOR":"Eine Etage hinzufügen",
+      "ADD_A_ROOM":"Ein Zimmer hinzufügen"
+    }
+}

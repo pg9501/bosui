@@ -1,0 +1,7 @@
+{
+  "UTILITY_COMPANY_NAV":"Versorgungsunternehmen",
+    "INVOICES": {
+        "INVOICES_NAV": "Rechnungen",
+      "INVOICE_LIST":"Rechnungsliste"
+    }
+}

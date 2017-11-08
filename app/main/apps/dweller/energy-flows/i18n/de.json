@@ -1,0 +1,32 @@
+{
+  "ENERGY_MANAGEMENT_NAV": "Energiemanagement",
+    "ENERGY_OVERVIEW": {
+        "ENERGY_OVERVIEW_NAV": "Energieübersicht",
+      "POWER_CONSUMPTION":"Stromverbrauchende Geräte",
+      "POWER_GENERATION":"Stromerzeugende Geräte",
+      "HEAT_GENERATION":"Wärmeerzeugende Geräte",
+      "COLD_GENERATION":"Kälteerzeugende Geräte",
+      "GAS_CONSUMPTION":"Gasverbrauchende Geräte",
+      "ENERGY_PRICE_OVERVIEW":"Energiepreise Übersicht",
+      "TECHNICAL_PARAMETERS":"Technische Parameter",
+      "PV_FEED_IN":"PV-Einspeisung",
+      "CHP_FEED_IN":"CHP-Einspeisung",
+      "ELECTRICITY_PRICE":"Strompreis",
+      "GAS_PRICE":"Gaspreis",
+      "VOLTAGE":"Spannung",
+      "FREQUENCY":"Frequenz",
+      "CURRENT_ENERGY_FLOWS":"Aktuelle Energieflüsse",
+      "BUILDING_POWER_USE":"Gebäudeenergienutzung(W)",
+      "CON_LABEL":"Verbrauch",
+      "GEN_LABEL": "Erzeugung",
+      "NET_LABEL":"Netto",
+      "POWER_LIMIT":"Leistungsbegrenzung",
+      "POWER_UPPER_LIMIT":"Leistungsobergrenze",
+      "POWER_LOWER_LIMIT":"Leistungsuntergrenze",
+      "EXTERNAL_POWER_PRICE":"Externer Strompreis",
+      "CHP_FEED_IN_PRICE":"CHP-Einspeisepreis",
+      "PV_FEED_IN_PRICE":"PV-Einspeisepreis",
+      "LOAD_LIMIT":"Lastbegrenzung(W)",
+      "TARIFF":"Tarif(ct)"
+    }
+}

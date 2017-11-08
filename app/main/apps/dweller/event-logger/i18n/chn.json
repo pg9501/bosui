@@ -1,0 +1,12 @@
+{
+    "EVENT_LOGGER": {
+        "EVENT_LOGGER_NAV": "事件日志",
+        "SEARCH": "搜索",
+      "DEVICE":"设备",
+      "LOCATION":"地点",
+      "TIME":"时间",
+      "ACTION":"命令",
+      "OPERATION_MODE":"操作方式",
+      "EXECUTOR":"执行者"
+    }
+}

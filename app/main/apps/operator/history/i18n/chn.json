@@ -1,0 +1,25 @@
+{
+  "HISTORY_NAV": "历史",
+    "BUILDING_HISTORY": {
+        "BUILDING_HISTORY_NAV": "建筑能源历史",
+      "START":"开始",
+      "END":"结束",
+      "GET_HISTORICAL_DATA":"获取历史数据",
+      "ELECTRICITY_PRICE":"外部电价",
+      "LOAD_LIMIT":"负载限制",
+      "PV_FEEDIN_PRICE":"光伏入网电价",
+      "CHP_FEEDIN_PRICE":"热电联产电价",
+      "BUILDING_NET_ENERGY_USE":"建筑净能源使用",
+      "BUILDING_ENERGY_CONSUMPTION":"建筑能源消耗",
+      "BUILDING_ENERGY_GENERATION":"建筑能源产生",
+      "COMMUNITY_NET_ENERGY_USE":"建筑净能源使用",
+      "COMMUNITY_ENERGY_CONSUMPTION":"社区平均电能消耗",
+      "COMMUNITY_ENERGY_GENERATION":"社区平均电能生成",
+      "POWER":"功率（瓦）",
+      "TARIFF":"电价（欧分）"
+    },
+  "COMMUNITY_HISTORY": {
+    "COMMUNITY_HISTORY_NAV": "社区能源历史"
+  }
+
+}

@@ -1,0 +1,18 @@
+{
+    "ENERGY_PREDICTION": {
+        "ENERGY_PREDICTION_NAV": "Energievorhersage",
+      "LOAD_LIMIT":"Lastbegrenzung",
+      "ELECTRICITY_PRICE":"Externer Strompreis",
+      "CHP_FEED_IN_PRICE":"CHP-Einspeisepreis",
+      "PV_FEED_IN_PRICE":"PV-Einspeisepreis",
+      "POWER":"Leistung(W)",
+      "TARIFF":"Tarif(ct)",
+      "BUILDING_BASE_LOAD":"Gebäudegrundlast",
+      "BUILDING_NET_LOAD":"Gebäudeanschluss",
+      "PV_GENERATION":"PV-Energieerzeugung",
+      "CHP_Consumption_Generation":"μCHP Energieverbrauch/Erzeugung",
+      "PV_ENERGY":"PV-Energie",
+      "CHP_ENERGY":"µCHP-Energie"
+
+    }
+}

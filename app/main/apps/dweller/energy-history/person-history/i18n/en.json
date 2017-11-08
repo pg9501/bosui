@@ -1,0 +1,25 @@
+{
+
+  "PERSON_HISTORY": {
+    "PERSON_HISTORY_NAV": "Personal History",
+    "YESTERDAY":"Yesterday",
+    "LAST_THREE_DAYS":"Last three days",
+    "LAST_WEEK":"Last week",
+    "LAST_MONTH":"Last month",
+    "PERSONAL_ENERGY_CONSUMPTION":"Personal energy consumption",
+    "COMMUNITY_AVERAGE_ENERGY_CONSUMPTION":"Community average energy consumption",
+    "RANKING_IN_THE_COMMUNITY":"Ranking in the community",
+    "PERSONAL_ENERGY_CONSUMPTION_COST":"Personal energy consumption cost",
+    "COMMUNITY_AVERAGE_ENERGY_CONSUMPTION_COST":"Community average energy consumption cost",
+    "POWER_UPPER_LIMIT":"Power Upper Limit",
+    "POWER_LOWER_LIMIT":"Power Lower Limit",
+    "PV_FEED_IN_PRICE":"PV Feed-in Price",
+    "CHP_FEED_IN_PRICE":"CHP Feed-in Price",
+    "ENERGY_CONSUMPTION":"Energy Consumption",
+    "EXTERNAL_POWER_PRICE":"External Power Price",
+    "PERSONAL_POWER_CONSUMPTION":"Personal Power Consumption",
+    "SELECT_A_COMMUNITY":"Select a community",
+    "POWER":"Power(W)",
+    "TARIFF":"Tariff(ct)"
+  }
+}

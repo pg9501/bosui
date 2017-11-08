@@ -1,0 +1,180 @@
+<div id="eshl-live" class="page-layout simple right-sidenav" layout="row">
+  <div class="center" layout="column" flex ms-scroll>
+    <!-- HEADER -->
+    <div class="header md-accent-bg" layout="row" layout-align="space-around center">
+      <md-divider flex="10"></md-divider>
+      <div flex="50" layout="row" layout-align="start center" >
+        <img src="assets/images/bos.png" width="10%" height="10%" style="min-width:40px;"/>
+        <div layout="column">
+          <span class="headerFont" >BOS Panel</span>
+          <small class="subHeaderFont" style="margin-top: -5px; margin-left: 1px">Building Operating System GUI</small>
+        </div>
+      </div>
+
+      <div flex="40" layout="row" layout-align="space-around center" >
+        <div flex="40" id="weather" layout="column" layout-align="space-around center" class="timeFont"></div>
+        <div flex="40" layout="column" layout-align="end center" style="margin-left: 0%">
+          <span id="time" class="md-caption timeFont">{{getDate | date:'HH:mm:ss'}}</span>
+          <span id="week" class="md-caption timeFont" style="padding-top: 5%">{{getDate | date:'EEE'}}</span>
+          <span id="date" class="md-caption timeFont" style="padding-top: 5%">{{getDate | date:'dd/MM/yyyy'}}</span>
+        </div>
+        <div flex="20" class="toolbar" style="margin-left: 0%">
+          <md-button class="md-icon-button sidenav-toggle" ng-click="vm.toggleSidenav('sidenav')" hide-gt-md
+                     aria-label="Toggle sidenav">
+            <md-icon md-font-icon="icon-menu" class="icon"></md-icon>
+          </md-button>
+        </div>
+      </div>
+    </div>
+
+    <!-- CONTENT -->
+    <div class="content" flex>
+      <md-tabs layout-fill>
+        <md-tab label="{{'BUILDING_HISTORY.BUILDING_HISTORY_NAV'|translate}}" layout-fill>
+          <md-tab-content layout-fill>
+
+            <div layout="column" layout-fill>
+              <md-card >
+                <md-card-content style="margin-bottom: -15px">
+
+                  <div layout="row" layout-align="center">
+
+                    <div layout="column" layout-align="start" flex="50">
+
+
+                      <div layout="row" style="margin-top: -10px">
+                        <h4>{{'BUILDING_HISTORY.START'|translate}}:</h4>
+
+                        <md-datepicker aria-label="mdp-date-picker"  ng-model="vm.startDate" md-min-date="vm.minDate" md-max-date="vm.maxDate" style="margin-top: 5px" ng-change="vm.changeDateTime()"></md-datepicker>
+                        <mdp-time-picker aria-label="mdp-time-picker" ng-model="vm.startTime" style="margin-top: -10px" ng-change="vm.changeDateTime()"></mdp-time-picker>
+
+
+                      </div>
+
+                      <div layout="row" style="margin-top: -25px" >
+                        <h4>{{'BUILDING_HISTORY.END'|translate}}:&nbsp;&nbsp;</h4>
+
+                        <md-datepicker aria-label="mdp-date-picker"  ng-model="vm.endDate" md-min-date="vm.minDate" md-max-date="vm.maxDate" style="margin-top: 5px" ng-change="vm.changeDateTime()"></md-datepicker>
+                        <mdp-time-picker aria-label="mdp-time-picker" ng-model="vm.endTime" style="margin-top: -10px;" ng-change="vm.changeDateTime()"></mdp-time-picker>
+
+                      </div>
+                      <div ng-if="!vm.isButtonDisabled" layout="row" layout-align="start center" style="margin-left:70px;margin-top: -40px;margin-bottom: -10px">
+                        <md-button class="md-accent" ng-click="vm.getHistoricalData()" ng-disabled="vm.isButtonDisabled" >{{'BUILDING_HISTORY.GET_HISTORICAL_DATA'|translate}}</md-button>
+                      </div>
+                    </div>
+
+                    <!--  <fieldset class="permission-fieldset" >
+                        <legend >Start Date & Time
+                        </legend>
+                        <div layout="column" >
+                          <md-datepicker aria-label="mdp-date-picker"  ng-model="vm.startDate" md-min-date="vm.minDate" md-max-date="vm.maxDate" style="margin-right: 5px"></md-datepicker>
+                          <mdp-time-picker aria-label="mdp-time-picker" ng-model="vm.startTime"  style="margin-top: -10px;margin-left: 10px"></mdp-time-picker>
+                        </div>
+                      </fieldset>-->
+                    <!-- <fieldset class="permission-fieldset" style="margin-left: 10px">
+                       <legend >End Date & Time
+                       </legend>
+                       <div layout="column">
+                         <mdp-date-picker  aria-label="mdp-date-picker" ng-model="vm.endDate"  style="margin-top: -10px"></mdp-date-picker>
+                         <mdp-time-picker aria-label="mdp-time-picker" ng-model="vm.endTime"  style="margin-top: -50px;margin-bottom: -20px" ></mdp-time-picker>
+
+                       </div>
+
+                     </fieldset>-->
+
+                    <div layout="column" class="md-padding" style="margin-top: -7px;">
+                      <md-checkbox ng-checked="vm.isBuildingNetChecked" ng-click="vm.checkBuildingNet()">
+                        <div style="font-family: sans-serif; color: goldenrod">{{'BUILDING_HISTORY.BUILDING_NET_ENERGY_USE'|translate}}</div>
+                      </md-checkbox>
+                      <md-checkbox ng-checked="vm.isBuildingConChecked" ng-click="vm.checkBuildingCon()">
+                        <div style="font-family: sans-serif; color: #4E342E">{{'BUILDING_HISTORY.BUILDING_ENERGY_CONSUMPTION'|translate}}</div>
+                      </md-checkbox>
+                      <md-checkbox style="margin-bottom: -30px" ng-checked="vm.isBuildingGenChecked" ng-click="vm.checkBuildingGen()" >
+                        <div style="font-family: sans-serif; color: #004D40">{{'BUILDING_HISTORY.BUILDING_ENERGY_GENERATION'|translate}}</div>
+                      </md-checkbox>
+
+                    </div>
+
+                    <div layout="column" class="md-padding" style="margin-top: -7px">
+                      <md-checkbox ng-checked="vm.isElectricityPriceChecked" ng-click="vm.checkElectricityPrice()">
+                        <div style="font-family: sans-serif; color: darkred">{{'BUILDING_HISTORY.ELECTRICITY_PRICE'|translate}}</div>
+                      </md-checkbox>
+                      <md-checkbox ng-checked="vm.isLoadLimitChecked" ng-click="vm.checkLoadLimit()">
+                        <div style="font-family: sans-serif; color:#9b59b6">{{'BUILDING_HISTORY.LOAD_LIMIT'|translate}}</div>
+                      </md-checkbox>
+
+                    </div>
+                    <div layout="column" class="md-padding" style="margin-top: -7px">
+                      <md-checkbox ng-checked="vm.isPVFeedinChecked" ng-click="vm.checkPVFeedin()" >
+                        <div style="font-family: sans-serif; color: #00cc66">{{'BUILDING_HISTORY.PV_FEEDIN_PRICE'|translate}}</div>
+                      </md-checkbox>
+                      <md-checkbox ng-checked="vm.isCHPFeedinChecked" ng-click="vm.checkCHPFeedin()" >
+                        <div style="font-family: sans-serif; color:#33cccc">{{'BUILDING_HISTORY.CHP_FEEDIN_PRICE'|translate}}</div>
+                      </md-checkbox>
+                    </div>
+
+                    <!-- <div layout="column" class="md-padding" style="margin-top: -7px">
+                       <md-checkbox ng-checked="vm.isCommunityNetChecked" ng-click="vm.checkCommunityNet()">
+                         <div style="font-family: sans-serif; color: #0000AA">{{'BUILDING_HISTORY.COMMUNITY_NET_ENERGY_USE'|translate}}</div>
+                       </md-checkbox>
+                       <md-checkbox ng-checked="vm.isCommunityConChecked" ng-click="vm.checkCommunityCon()">
+                         <div style="font-family: sans-serif; color: coral">{{'BUILDING_HISTORY.COMMUNITY_ENERGY_CONSUMPTION'|translate}}</div>
+                       </md-checkbox>
+                       <md-checkbox ng-checked="vm.isCommunityGenChecked" ng-click="vm.checkCommunityGen()" >
+                         <div style="font-family: sans-serif; color: #ccd232">{{'BUILDING_HISTORY.COMMUNITY_ENERGY_GENERATION'|translate}}</div>
+                       </md-checkbox>
+
+                     </div>-->
+
+                  </div>
+
+                </md-card-content>
+              </md-card>
+
+              <div id="lineChartContainerForBuildingHistory" style=" margin-top: 30px" flex>
+                <div flex clas="md-padding"   container-id ="lineChartContainerForBuildingHistory"  dual-yaxis-line-chart-for-building-history is-render-all="{{vm.isRenderAll}}" is-render-y1="{{vm.isRenderY1}}"
+                     y1-label="{{'BUILDING_HISTORY.POWER'|translate}}" y2-label="{{'BUILDING_HISTORY.TARIFF'|translate}}" electricity-price-label="{{'BUILDING_HISTORY.ELECTRICITY_PRICE'|translate}}"
+                     load-limit-label="{{'BUILDING_HISTORY.LOAD_LIMIT'|translate}}" pv-feedin-price-label="{{'BUILDING_HISTORY.PV_FEEDIN_PRICE'|translate}}" chp-feedin-price-label="{{'BUILDING_HISTORY.CHP_FEEDIN_PRICE'|translate}}"
+                     building-energy-net-label="{{'BUILDING_HISTORY.BUILDING_NET_ENERGY_USE'|translate}}" building-energy-consumption-label="{{'BUILDING_HISTORY.BUILDING_ENERGY_CONSUMPTION'|translate}}" building-energy-generation-label="{{'BUILDING_HISTORY.BUILDING_ENERGY_GENERATION'|translate}}"
+                     community-energy-net-label="{{'BUILDING_HISTORY.COMMUNITY_NET_ENERGY_USE'|translate}}" community-energy-consumption-label="{{'BUILDING_HISTORY.COMMUNITY_ENERGY_CONSUMPTION'|translate}}" community-energy-generation-label="{{'BUILDING_HISTORY.COMMUNITY_ENERGY_GENERATION'|translate}}"
+                     start-time-stamp="{{vm.startTimeStamp}}" end-time-stamp="{{vm.endTimeStamp}}" power-upper-limit-data="{{vm.powerUpperLimitData}}" power-lower-limit-data="{{vm.powerLowerLimitData}}" electricity-price-data="{{vm.electricityPrices}}" pv-feedin-price-data="{{vm.pvFeedinPrices}}" chp-feedin-price-data="{{vm.chpFeedinPrices}}"
+                     building-net-energy-data="{{vm.buildingNetEnergyData}}" building-energy-generation-data="{{vm.buildingEnergyGenerationData}}" building-energy-consumption-data="{{vm.buildingEnergyConsumptionData}}" community-energy-generation-data="{{vm.communityEnergyGenerationData}}" community-net-energy-data="{{vm.communityNetEnergyData}}"
+                     community-energy-consumption-data="{{vm.communityEnergyConsumptionData}}">
+                </div>
+              </div>
+            </div>
+
+
+
+
+
+
+          </md-tab-content>
+
+        </md-tab>
+      </md-tabs>
+
+
+
+    </div>
+
+  </div>
+
+
+
+</div>
+<script src="assets/lib/jquery.simpleWeather.js"></script>
+<script src="assets/lib/weather.js"></script>
+
+<script type="text/javascript">
+
+</script>
+
+<style>
+
+  .permission-fieldset {
+    border-style: solid;
+    border-width: 1px;
+    border-color: lightgrey;
+    height: 100%; }
+</style>

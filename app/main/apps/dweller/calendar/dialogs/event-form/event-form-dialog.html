@@ -1,0 +1,420 @@
+<md-dialog class="event-form-dialog" aria-label="New Message">
+
+    <form name="eventForm" id="eventForm" class="md-inline-form" novalidate>
+        <md-toolbar class="md-accent md-hue-2">
+            <div class="md-toolbar-tools" layout="row" layout-align="space-between center">
+              <div ng-switch on="vm.dialogTitle">
+                <div ng-switch-when="Add Event">
+                  <span class="title">{{'CALENDAR.ADD_EVENT'|translate}}</span>
+                </div>
+                <div ng-switch-when="Edit Event">
+                  <span class="title">{{'CALENDAR.EDIT_EVENT'|translate}}</span>
+                </div>
+              </div>
+
+                <md-button class="md-icon-button" ng-click="vm.closeDialog()" aria-label="Close dialog" translate
+                           translate-attr-aria-label="CALENDAR.CLOSE_DIALOG">
+                    <md-icon md-font-icon="icon-close"></md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+
+        <md-dialog-content ms-scroll>
+            <md-input-container class="md-block">
+                <label translate="CALENDAR.TITLE">Title</label>
+                <input name="title" ng-model="vm.calendarEvent.title">
+               <!-- <div ng-messages="eventForm.title.$error" ng-show="eventForm.title.$touched" role="alert">
+                    <div ng-message="required">
+                        <span translate="CALENDAR.ERRORS.TITLE_REQUIRED">Title field is required</span>
+                    </div>
+                </div>-->
+            </md-input-container>
+
+           <!-- <md-list class="all-day">
+                <md-list-item>
+                    <p translate="CALENDAR.ALL_DAY">All Day</p>
+                    <md-switch class="md-secondary" ng-model="vm.calendarEvent.allday" aria-label="All day" translate
+                               translate-attr-aria-label="CALENDAR.ALL_DAY"></md-switch>
+                </md-list-item>
+            </md-list>-->
+            <lable class="md-body-2" style="font-weight: bold">{{'CALENDAR.START_DATE_AND_TIME'|translate}}</lable>
+            <div layout="row" class="date-row">
+                <md-datepicker ng-model="vm.calendarEvent.startDate" md-placeholder="Start Date"></md-datepicker>
+
+                <!--<md-input-container flex md-no-float>
+                    <input ng-model="vm.calendarEvent.startTime" placeholder="Start Time" translate
+                           translate-attr-placeholder="CALENDAR.START_TIME">
+                </md-input-container>-->
+
+              <div layout-align="column">
+                <mdp-time-picker name="startTime" flex aria-label="mdp-time-picker" ng-model="vm.calendarEvent.startTime"  ng-change="vm.changeDateTime()" required></mdp-time-picker>
+                <div ng-messages="eventForm.startTime.$error" >
+                  <div ng-message="required" style="margin-top: -40px;margin-left: 40px">
+                    <span class="md-caption" style="color:red">{{'CALENDAR.ERRORS.START_TIME_IS_REQUIRED'|translate}}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+          <div class="md-padding" style="margin-top: -40px">
+            <md-radio-group ng-model="vm.settingType" layout="row" ng-change="vm.changeSettingType()">
+
+              <md-radio-button value="Location" style="margin-bottom: 10px" >{{'CALENDAR.SET_LOCATION'|translate}}</md-radio-button>
+              <md-radio-button value="Set Device(s)" style="margin-bottom: 10px" > {{'CALENDAR.SET_DEVICE'|translate}} </md-radio-button>
+
+            </md-radio-group>
+
+            <div id="locationSettingDiv">
+
+              <md-select ng-model="vm.calendarEvent.locationStart.name" placeholder="{{'CALENDAR.SELECT_A_LOCATION'|translate}}" ng-change="vm.changeLocation(vm.calendarEvent.locationStart.name)">
+                <md-option><em>{{'CALENDAR.NOT_IN_THIS_BUILDING'|translate}}</em></md-option>
+                <md-option ng-repeat="location in vm.locations" value="{{location.name}}">{{location.name}}</md-option>
+              </md-select>
+
+              <div id="outsideLocationDiv">
+                <md-input-container class="md-block" flex >
+                  <input ng-model="vm.calendarEvent.locationStart.name" translate aria-label="input"
+                         translate-attr-placeholder="CALENDAR.INPUT_THE_LOCATION_NAME" ng-if="!vm.calendarEvent.locationStart.isInBuilding">
+                </md-input-container>
+              </div>
+
+              <div layout="column" id="tempAndHumiditySettingTable" style="display: none">
+                <div layout="row">
+                  <md-checkbox ng-model="vm.isDisabledTempSetting" aria-label="Checkbox 1" ng-click="vm.disableTempSetting()">
+                    {{'CALENDAR.DISABLE_TEMPERATURE_SETTING'|translate}}
+                  </md-checkbox>
+                  <md-checkbox style="margin-left: 20px" ng-model="vm.isDisabledHumiditySetting" aria-label="Checkbox 1" ng-click="vm.disableHumiditySetting()">
+                    {{'CALENDAR.DISABLE_HUMIDITY_SETTING'|translate}}
+                  </md-checkbox>
+                </div>
+                <table >
+                  <tr id="tempSettingTableRow" >
+                    <td width="10%">
+                      <span>{{'CALENDAR.TEMPERATURE'|translate}}:</span>
+                    </td>
+                    <td width="35%">
+                      <ng-touch-spin id="tempTouchSpin" ng-disabled="true" style="margin-left: 10px; " ng-model="vm.calendarEvent.locationStart.temperature" postfix="&deg;C" initval="25" decimals="0" step="1">
+                      </ng-touch-spin>
+                    </td>
+
+                  </tr>
+                  <tr id="humiditySettingTableRow" >
+                    <td>
+                      <span style="margin-top: 20px;margin-bottom: 20px">{{'CALENDAR.HUMIDITY'|translate}}:</span>
+                    </td>
+                    <td>
+                      <ng-touch-spin style=" margin-left: 10px;margin-top: 20px;margin-bottom: 20px" ng-model="vm.calendarEvent.locationStart.humidity" postfix="%" initval="50" decimals="0" step="1">
+                      </ng-touch-spin>
+                    </td>
+
+                  </tr>
+                </table>
+              </div>
+            </div>
+
+            <div id="deviceSettingDiv" style="display: none" layout="column">
+              <div layout="column" ng-repeat="deviceGroup in vm.calendarEvent.deviceGroupsStart" style="margin-bottom: 20px">
+                <div layout="row">
+                  <div layout="column" flex>
+                    <md-input-container aria-label="input-container" class="md-block"  flex>
+                     <!-- <label>Select one device or a group of device with the same attributes</label>-->
+                      <md-select name="devices_{{$index}}" ng-model="deviceGroup.deviceNames" multiple placeholder="{{'CALENDAR.SELECT_DEVICE'|translate}}" ng-change="vm.validateDevicesStart(deviceGroup,'actionAndStateDiv_'+$index,eventForm,'devices_'+$index)" aria-label="select">
+                        <md-optgroup ng-repeat="location in vm.locations" label="{{location.name}}">
+                          <md-option ng-repeat="device in vm.devices | filter: {location: location.name }" ng-disabled="vm.checkDisabled(deviceGroup,device.name)">{{device.name}} ({{location.name}})</md-option>
+                        </md-optgroup>
+                      </md-select>
+                    </md-input-container>
+                    <div ng-messages="eventForm['devices_'+$index].$error" style="margin-top: -10px">
+                      <div ng-message="validationError" class="md-body-1" style="color: red">{{'CALENDAR.ERRORS.SAME_ATTRIBUTES_REQUIRED'|translate}}</div>
+                    </div>
+                  </div>
+                  <md-button aria-label="md-button" style="width: auto">
+                    <md-icon md-font-icon="icon-delete" class="md-accent" ng-click="vm.removeDeviceGroup(deviceGroup)"></md-icon>
+                    <md-tooltip ng-if="deviceGroup.deviceNames.length==1">Remove this device</md-tooltip>
+                    <md-tooltip ng-if="deviceGroup.deviceNames.length>1">Remove these devices</md-tooltip>
+                  </md-button>
+                </div>
+
+                <div id="actionAndStateDiv_{{$index}}" style="display: none">
+
+                  <div>
+                    <label>{{'CALENDAR.AVAILABLE_ACTIONS'|translate}}:</label>
+                    <div ng-style="action.widget.type=='Button'&& {'display': 'inline-block','margin-left':'-7px','margin-bottom':'20px'}" ng-repeat="action in deviceGroup.deviceActions" ng-include="action.widget.template" ng-style="action.widget.type=='Switch' && {'marginLeft':'6px'}"></div>
+
+                  </div>
+
+                  <div layout="row">
+                    <!--<md-input-container flex class="md-block">
+                      <label>Set Target State</label>
+                      <input ng-model="vm.calendarEvent.startTime" ng-click="vm.showDeviceActions()">
+                    </md-input-container>-->
+                    <label>{{'CALENDAR.TARGET_STATE'|translate}}:&nbsp;&nbsp;&nbsp;</label>
+                    <span ng-style="(deviceGroup.targetState=='??? (not set yet)'||deviceGroup.targetState=='??? (noch nicht eingestellt)'||deviceGroup.targetState=='??? (还未设置)') && {'color':'red'}">{{deviceGroup.targetState}}</span>
+                  </div>
+                </div>
+              </div>
+              <md-button aria-label="+ Add Another Device" translate="CALENDAR.ADD_DEVICE"
+                         translate-attr-aria-label="CALENDAR.ADD_DEVICE" flex ng-click="vm.addNewDeviceGroup()">
+                + Add Another Device or A Group of Devices
+              </md-button>
+            </div>
+          </div>
+
+
+          <lable class="md-body-2" style="font-weight: bold">{{'CALENDAR.END_DATE_AND_TIME'|translate}}</lable>
+            <div layout="row" class="date-row">
+                <md-datepicker ng-model="vm.calendarEvent.endDate" md-placeholder="{{'CALENDAR.END_DATE'|translate}}"></md-datepicker>
+
+               <!-- <md-input-container flex md-no-float>
+                    <input ng-model="vm.calendarEvent.endTime" placeholder="End Time" translate
+                           translate-attr-placeholder="CALENDAR.END_TIME">
+                </md-input-container>-->
+
+              <div layout-align="column">
+                <mdp-time-picker name="endTime" flex aria-label="mdp-time-picker" md-placeholder="{{'CALENDAR.END_TIME'|translate}}" ng-model="vm.calendarEvent.endTime"  ng-change="vm.changeDateTime()" required></mdp-time-picker>
+                <div ng-messages="eventForm.endTime.$error" >
+                  <div style="margin-top: -30px;margin-left: 40px" ng-message="required">
+                    <span class="md-caption" style="color:red">{{'CALENDAR.ERRORS.END_TIME_REQUIRED'|translate}}</span>
+                  </div>
+                </div>
+              </div>
+              </div>
+
+          <div class="md-padding" style="margin-top: -40px">
+            <md-radio-group ng-model="vm.settingTypeEnd" layout="row" ng-change="vm.changeSettingTypeEnd()" aria-label="radio-group">
+
+              <md-radio-button value="Location" style="margin-bottom: 10px" >{{'CALENDAR.SET_LOCATION'|translate}}</md-radio-button>
+              <md-radio-button value="Set Device(s)" style="margin-bottom: 10px" > {{'CALENDAR.SET_DEVICE'|translate}} </md-radio-button>
+
+            </md-radio-group>
+
+            <div id="locationSettingDivEnd" style="display: none">
+
+             <!-- <md-select ng-model="vm.calendarEvent.locationEnd.name" placeholder="Select a location in this building" ng-change="vm.changeLocationEnd(vm.calendarEvent.locationEnd.name)">
+                <md-option><em>Not in this building</em></md-option>
+                <md-option ng-repeat="location in vm.locations" value="{{location.name}}">{{location.name}}</md-option>
+              </md-select>
+
+              <div id="outsideLocationDivEnd">
+                <md-input-container class="md-block" flex >
+                  <input ng-model="vm.calendarEvent.locationStart.name" translate
+                         translate-attr-placeholder="CALENDAR.INPUT_THE_LOCATION_NAME" ng-if="!vm.calendarEvent.locationEnd.isInBuilding">
+                </md-input-container>
+              </div>-->
+
+              <div  layout="row" layout-align="start center">
+                <label>{{'CALENDAR.LOCATION'|translate}}:</label>
+                <md-input-container aria-label="input-container">
+                  <div style="margin-top: -5px;margin-left: 20px"> {{vm.calendarEvent.locationStart.name.toString()}}</div>
+                </md-input-container>
+              </div>
+
+              <div  layout="column" id="tempAndHumiditySettingTableEnd" style="display: none">
+                <div layout="row">
+                  <md-checkbox ng-model="vm.isDisabledTempSettingEnd" aria-label="Checkbox 1" ng-click="vm.disableTempSettingEnd()">
+                    {{'CALENDAR.DISABLE_TEMPERATURE_SETTING'|translate}}
+                  </md-checkbox>
+                  <md-checkbox style="margin-left: 20px" ng-model="vm.isDisabledHumiditySettingEnd" aria-label="Checkbox 1" ng-click="vm.disableHumiditySettingEnd()">
+                    {{'CALENDAR.DISABLE_HUMIDITY_SETTING'|translate}}
+                  </md-checkbox>
+                </div>
+                <table >
+                  <tr id="tempSettingTableRowEnd" >
+                    <td width="10%">
+                      <span>{{'CALENDAR.TEMPERATURE'|translate}}:</span>
+                    </td>
+                    <td width="35%">
+                      <ng-touch-spin id="tempTouchSpinEnd" ng-disabled="true" style="margin-left: 10px; " ng-model="vm.calendarEvent.locationEnd.temperature" postfix="&deg;C" initval="25" decimals="0" step="1">
+                      </ng-touch-spin>
+                    </td>
+
+                  </tr>
+                  <tr id="humiditySettingTableRowEnd" >
+                    <td>
+                      <span style="margin-top: 20px;margin-bottom: 20px">{{'CALENDAR.HUMIDITY'|translate}}:</span>
+                    </td>
+                    <td>
+                      <ng-touch-spin style=" margin-left: 10px;margin-top: 20px;margin-bottom: 20px" ng-model="vm.calendarEvent.locationEnd.humidity" postfix="%" initval="50" decimals="0" step="1">
+                      </ng-touch-spin>
+                    </td>
+
+                  </tr>
+                </table>
+              </div>
+            </div>
+
+            <div id="deviceSettingDivEnd" style="display: none" layout="column">
+              <div layout="column" ng-repeat="deviceGroup in vm.calendarEvent.deviceGroupsEnd" style="margin-bottom: 20px">
+               <!-- <div layout="row">
+                  <md-input-container class="md-block"  flex>
+                    <label>Select one device or a group of device with the same attributes</label>
+                    <md-select name="devices" ng-model="deviceGroup.deviceNames" multiple ng-change="vm.validateDevices(deviceGroup,'actionAndStateDiv_'+$index+'_End',eventForm)">
+                      <md-optgroup ng-repeat="location in vm.locations" label="{{location.name}}">
+                        <md-option ng-value="device.name" ng-repeat="device in vm.devices | filter: {location: location.name }" ng-disabled="vm.checkDisabled(deviceGroup,device.name)">{{device.name}}</md-option>
+                      </md-optgroup>
+                    </md-select>
+                    <div ng-messages="eventForm.devices.$error">
+                      &lt;!&ndash;<div ng-message="required">Please select one device or a group of devices with the same attributes.</div>&ndash;&gt;
+                      <div ng-message="validationError">These devices do not have the same attributes.</div>
+                    </div>
+                  </md-input-container>
+                  <md-button aria-label="md-button" style="width: auto">
+                    <md-icon md-font-icon="icon-delete" class="md-accent" ng-click="vm.removeDeviceGroupEnd(deviceGroup)"></md-icon>
+                    <md-tooltip ng-if="deviceGroup.deviceNames.length==1">Remove this device</md-tooltip>
+                    <md-tooltip ng-if="deviceGroup.deviceNames.length>1">Remove these devices</md-tooltip>
+                  </md-button>
+                </div>-->
+
+                <!--<md-input-container flex class="md-block">
+                  <label>{{deviceGroup.deviceNames}}</label>
+                </md-input-container>-->
+
+
+                <div ng-if="deviceGroup.deviceNames.length>=0" layout="row" layout-align="start center">
+                  <label>{{'CALENDAR.DEVICE'|translate}}:</label>
+                  <md-input-container aria-label="input-container">
+                    <div style="margin-top: -5px;margin-left: 20px"> {{deviceGroup.deviceNames.toString()}}</div>
+                  </md-input-container>
+                </div>
+
+
+                <div ng-if="deviceGroup.deviceNames.length>=0" id="actionAndStateDiv_{{$index}}_End" style="display: none">
+
+                  <div>
+                    <label>{{'CALENDAR.AVAILABLE_ACTIONS'|translate}}:</label>
+                    <div ng-style="action.widget.type=='Button'&& {'display': 'inline-block','margin-left':'-7px','margin-bottom':'20px'}" ng-repeat="action in deviceGroup.deviceActions" ng-include="action.widget.template" ng-style="action.widget.type=='Switch' && {'marginLeft':'6px'}"></div>
+
+                  </div>
+
+                  <div layout="row">
+                    <!--<md-input-container flex class="md-block">
+                      <label>Set Target State</label>
+                      <input ng-model="vm.calendarEvent.startTime" ng-click="vm.showDeviceActions()">
+                    </md-input-container>-->
+                    <label>{{'CALENDAR.TARGET_STATE'|translate}}:&nbsp;&nbsp;&nbsp;</label>
+                    <span ng-style="deviceGroup.targetState=='??? (not set yet)' && {'color':'red'}">{{deviceGroup.targetState}}</span>
+                  </div>
+                </div>
+              </div>
+             <!-- <md-button aria-label="+ Add Another Device" translate="CALENDAR.ADD_DEVICE"
+                         translate-attr-aria-label="CALENDAR.ADD_DEVICE" flex ng-click="vm.addNewDeviceGroupEnd()">
+                + Add Another Device or A Group of Devices
+              </md-button>-->
+            </div>
+          </div>
+
+            <!--<md-input-container class="md-block" flex>
+              <label translate="CALENDAR.REPEAT">Repeat</label>
+              <md-select ng-model="vm.calendarEvent.repeat">
+                <md-option ng-selected="true"><em>None</em></md-option>
+                <md-option>Every day</md-option>
+                <md-option>Every week</md-option>
+                <md-option>Every month</md-option>
+              </md-select>
+            </md-input-container>-->
+
+
+
+
+
+
+
+          <!--<fieldset class="scheduler-border" flex>
+            <legend class="scheduler-border">Location
+            </legend>
+
+            <md-select style="margin-top: -10px" ng-model="vm.selectedLocation.name" placeholder="Select a location">
+              <md-option ng-repeat="location in vm.locations" value="{{location.name}}">{{location.name}}</md-option>
+            </md-select>
+
+            <table>
+              <tr>
+                <td width="10%">
+                  <span>Temperature:</span>
+                </td>
+                <td width="35%">
+                  <ng-touch-spin style="margin-left: 10px; " ng-model="vm.selectedLocation.temperature" postfix="&deg;C" initval="25" decimals="0" step="1">
+                  </ng-touch-spin>
+                </td>
+                <td>
+                  <md-checkbox style="margin-left: 10px" ng-model="data.cb1" aria-label="Checkbox 1">
+                    Disable temperature setting
+                  </md-checkbox>
+                </td>
+              </tr>
+              <tr >
+                <td>
+                  <span style="margin-top: 20px;margin-bottom: 20px">Humidity:</span>
+                </td>
+                <td>
+                  <ng-touch-spin style=" margin-left: 10px;margin-top: 20px;margin-bottom: 20px" ng-model="vm.selectedLocation.humidity" postfix="%" initval="50" decimals="0" step="1">
+                  </ng-touch-spin>
+                </td>
+                <td>
+                  <md-checkbox style="margin-left: 10px" ng-model="data.cb1" aria-label="Checkbox 1">
+                    Disable humidity setting
+                  </md-checkbox>
+                </td>
+              </tr>
+            </table>
+
+          </fieldset>-->
+
+          <!--<md-button aria-label="+ Add Another Location" translate="CALENDAR.ADD_LOCATION"
+                                translate-attr-aria-label="CALENDAR.ADD_LOCATION">
+                       + Add Another Location
+                     </md-button>-->
+
+
+            <!--<md-input-container flex class="md-block textarea-container">
+                <label translate="CALENDAR.NOTES">Notes</label>
+                <textarea ng-model="vm.task.notes" md-maxlength="250"></textarea>
+            </md-input-container>-->
+
+
+        </md-dialog-content>
+
+        <md-dialog-actions layout="row" layout-align="space-between center">
+            <md-button ng-click="vm.saveEvent()" class="save-button md-accent md-raised" aria-label="SAVE"
+                       ng-disabled="eventForm.$invalid || eventForm.$pristine"
+                       translate="CALENDAR.SAVE"
+                       translate-attr-aria-label="CALENDAR.SAVE">
+                SAVE
+            </md-button>
+
+            <md-button class="md-icon-button" aria-label="Delete" translate translate-attr-aria-label="CALENDAR.DELETE" ng-click="vm.removeEvent()">
+                <md-icon md-font-icon="icon-delete"></md-icon>
+                <md-tooltip><span translate="CALENDAR.DELETE">Delete</span></md-tooltip>
+            </md-button>
+        </md-dialog-actions>
+
+
+    </form>
+
+</md-dialog>
+
+<style>
+
+  .location-fieldset {
+    border-style: solid;
+    border-width: 1px;
+    height: 100%; }
+
+  fieldset.scheduler-border {
+    border: 1px groove rgba(211, 211, 211, 0.45) !important;
+    padding: 0 1.4em 1.4em 1.4em !important;
+    margin: 0 0 1.5em 0 !important;
+    -webkit-box-shadow:  0px 0px 0px 0px rgba(211, 211, 211, 0.45);
+    box-shadow:  0px 0px 0px 0px rgba(211, 211, 211, 0.45);
+  }
+
+  legend.scheduler-border {
+    font-size: 1.2em !important;
+    font-weight: bold !important;
+    text-align: left !important;
+    width:auto;
+    padding:0 5px;
+    border-bottom:none;
+  }
+</style>

@@ -1,0 +1,14 @@
+{
+    "FLOOR_PLAN": {
+        "FLOOR_PLAN_NAV": "平面图",
+      "DEVICE_STATE_OVERVIEW":"设备状态总览",
+      "DEVICES_OFF":"关闭的设备",
+      "NOT_CONSUMING_POWER":"不消耗电能",
+      "DEVICES_STANDBY":"待命的设备",
+      "CONSUMING_A_LITTLE_POWER":"只消耗很少的电能",
+      "DEVICES_RUNNING":"正在运行的设备",
+      "CONSUMING_POWER":"消耗电能",
+      "DEVICES_GENERATING_POWER":"正在发电的设备",
+      "MORE_INFORMATION":"点击平面图上的设备获取更多信息"
+    }
+}

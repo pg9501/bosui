@@ -1,0 +1,68 @@
+<!--<div class="ms-sb-add-card-button" layout="row" layout-align="start center" ng-hide="formActive">
+    <div>
+        <i class="icon-plus s20"></i>
+    </div>
+    <span translate="SB.ADD_A_DEVICE">Add a device</span>
+
+</div>-->
+
+<div class="ms-sb-add-card-button" layout="row" layout-align="start center" ng-hide="formActive">
+  <md-button class="md-fab md-accent md-mini" aria-label="Use Android">
+    <md-icon class=" md-accent" md-font-icon="icon-plus" ></md-icon>
+  </md-button>
+  <a class="md-accent md-subhead" ng-href="#">{{'SCENES.ADD_NEW_DEVICES_TO_THE_SCENE'|translate}}</a>
+</div>
+
+<div class="ms-sb-add-card-form-wrapper" ng-hide="!formActive">
+    <form ng-submit="vm.addNewDevices()" class="ms-sb-add-card-form" layout="column">
+        <!--<md-input-container class="md-accent" flex md-no-float>
+
+            &lt;!&ndash;<md-select ng-model="vm.newDevice" placeholder="Select a device" aria-label="select">
+              <md-option  ng-repeat="device in vm.allDevices" ng-disabled="vm.checkDisabled(device.name)">{{device.name}}&nbsp;({{device.location}})
+              </md-option>
+            </md-select>&ndash;&gt;
+          <md-select class="md-accent" ng-model="vm.newDevices" placeholder="{{'SCENES.SELECT_A_DEVICE'|translate}}" aria-label="select" multiple>
+            <md-optgroup class="md-accent" ng-repeat="locationDevices in vm.locationDevices" label="{{locationDevices.location}}">
+              <md-option class="md-accent" ng-value="device.deviceId" ng-repeat="device in locationDevices.devices" ng-disabled="vm.checkDisabled(device.deviceId)">{{device.deviceId}}</md-option>
+            </md-optgroup>
+          </md-select>
+        </md-input-container>-->
+
+      <div layout="row" layout-align="start center" flex>
+        <md-input-container flex="30">
+          <label>{{'SCENES.SELECT_FLOOR'|translate}}</label>
+          <md-select name="type" ng-model="vm.selectedFloor" required ng-change="vm.changeFloor()" aria-label="select">
+            <md-option ng-repeat="floor in vm.floors" value="{{floor.name}}">{{floor.name}}</md-option>
+          </md-select>
+        </md-input-container>
+        <md-input-container flex="30" style="margin-left: 20px">
+          <label>{{'SCENES.SELECT_ROOM'|translate}}</label>
+          <md-select ng-model="vm.selectedRoom" required ng-disabled="vm.selectedFloor===''" aria-label="select" ng-change="vm.changeRoom()">
+            <md-option ng-repeat="room in vm.roomsInFloor" value="{{room.name}}">{{room.name}}</md-option>
+          </md-select>
+        </md-input-container>
+        <md-input-container flex style="margin-left: 20px">
+          <label>{{'SCENES.SELECT_DEVICES'|translate}}</label>
+          <md-select class="md-accent" ng-model="vm.selectedDevices" required ng-disabled="vm.selectedFloor==='' || vm.selectedRoom===''" aria-label="select" multiple>
+            <md-option ng-repeat="device in vm.devicesInRoom" value="{{device.id}}" ng-disabled="vm.checkDisabled(device.id)">
+              <div layout="row" layout-align="center center">
+                <img ng-src="{{device.image}}" style="width:25px;margin-right: 5px" class="md-avatar" />
+                <label>{{device.id}}</label>
+              </div>
+
+            </md-option>
+          </md-select>
+        </md-input-container>
+      </div>
+
+        <div layout="row" layout-align="space-between center">
+            <md-button type="submit" class="add-button md-accent md-raised" aria-label="add"
+                       translate-attr-aria-label="SCENES.ADD" ng-disabled="vm.selectedDevices===''">
+                <span translate="SCENES.ADD">Add</span></md-button>
+            <md-button ng-click="toggleForm()" class="cancel-button md-icon-button" aria-label="cancel"
+                       translate-attr-aria-label="SCENES.CANCEL">
+                <md-icon md-font-icon="icon-close"></md-icon>
+            </md-button>
+        </div>
+    </form>
+</div>

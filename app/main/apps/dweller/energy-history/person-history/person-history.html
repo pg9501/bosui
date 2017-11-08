@@ -1,0 +1,132 @@
+<div id="eshl-live" class="page-layout simple right-sidenav" layout="row">
+  <div class="center" layout="column" flex ms-scroll>
+    <!-- HEADER -->
+    <div class="header md-accent-bg" layout="row" layout-align="space-around center">
+      <md-divider flex="10"></md-divider>
+      <div flex="50" layout="row" layout-align="start center" >
+        <img src="assets/images/bos.png" width="10%" height="10%" style="min-width:40px;"/>
+        <div layout="column">
+          <span class="headerFont" >BOS Panel</span>
+          <span class="subHeaderFont" style="margin-top: -5px; margin-left: 1px">Building Operating System GUI</span>
+        </div>
+      </div>
+
+      <div flex="40" layout="row" layout-align="space-around center" >
+        <div flex="40" id="weather" layout="column" layout-align="space-around center" class="timeFont"></div>
+        <div flex="40" layout="column" layout-align="end center" style="margin-left: 0%">
+          <span id="time" class="md-caption timeFont">{{getDate | date:'HH:mm:ss'}}</span>
+          <span id="week" class="md-caption timeFont" style="padding-top: 5%">{{getDate | date:'EEE'}}</span>
+          <span id="date" class="md-caption timeFont" style="padding-top: 5%">{{getDate | date:'dd/MM/yyyy'}}</span>
+        </div>
+        <div flex="20" class="toolbar" style="margin-left: 0%">
+          <md-button class="md-icon-button sidenav-toggle" ng-click="vm.toggleSidenav('sidenav')" hide-gt-md
+                     aria-label="Toggle sidenav">
+            <md-icon md-font-icon="icon-menu" class="icon"></md-icon>
+          </md-button>
+        </div>
+      </div>
+    </div>
+
+    <!-- CONTENT -->
+
+      <div class="content" flex>
+        <md-tabs layout-fill>
+          <md-tab label="{{'PERSON_HISTORY.PERSON_HISTORY_NAV'|translate}}" layout-fill>
+            <md-tab-content layout-fill>
+            <div layout="column" layout-fill>
+              <md-card>
+                <md-card-content>
+                  <div layout="row" layout-align="space-around center">
+                    <!--<md-radio-group layout="row" class="md-list-item-text" ng-model="vm.timePeriod" ng-change="vm.changeTimePeriod()" required>
+                      <md-radio-button value="Yesterday" ><p class="md-title">{{'PERSON_HISTORY.YESTERDAY'|translate}}</p></md-radio-button>
+                      <md-radio-button value="Last three days"><p class="md-title">{{'PERSON_HISTORY.LAST_THREE_DAYS'|translate}}</p></md-radio-button>
+                      <md-radio-button value="Last week"><p class="md-title">{{'PERSON_HISTORY.LAST_WEEK'|translate}}</p></md-radio-button>
+                      <md-radio-button value="Last month"><p class="md-title">{{'PERSON_HISTORY.LAST_MONTH'|translate}}</p></md-radio-button>
+                    </md-radio-group>-->
+
+                    <md-datepicker ng-model="vm.selectedDate" md-min-date="vm.minDate" ng-change="vm.changeTimePeriod()" md-max-date="vm.maxDate" md-placeholder="Enter a date"></md-datepicker>
+
+
+                    <div layout="row" layout-align="start center">
+
+                      <md-input-container style="width: 150px">
+                        <label >{{'PERSON_HISTORY.SELECT_A_COMMUNITY'|translate}}:</label>
+                        <md-select ng-model="vm.community" aria-label="select" ng-change="vm.changeCommunity()" required>
+                          <md-option ng-repeat="community in vm.communities" ng-selected="$first">{{community.name}}
+                          </md-option>
+                        </md-select>
+                      </md-input-container>
+                    </div>
+                  </div>
+                </md-card-content>
+              </md-card>
+              <div layout="row" layout-align="space-around center" class="md-padding" >
+                <div layout="column" style="font-size: 18px">
+                  <div layout="row" flex><div >{{'PERSON_HISTORY.PERSONAL_ENERGY_CONSUMPTION'|translate}}:&nbsp;</div> <b> {{vm.personalEnergyConsumption}}</b></div>
+                  <div layout="row" flex><div >{{'PERSON_HISTORY.COMMUNITY_AVERAGE_ENERGY_CONSUMPTION'|translate}}:&nbsp;</div><b> {{vm.communityEnergyConsumption}}</b></div>
+                  <div layout="row" flex>
+                    <div>{{'PERSON_HISTORY.RANKING_IN_THE_COMMUNITY'|translate}}:&nbsp;</div>
+                    <b> {{vm.consumptionRanking}}</b>
+                    <div style='margin-left: 10px' layout="column" layout-align="center"><img ng-src="{{vm.energyMedal}}" /></div>
+                  </div>
+                </div>
+
+                <div layout="column" style="font-size: 18px">
+                  <div layout="row" flex><div >{{'PERSON_HISTORY.PERSONAL_ENERGY_CONSUMPTION_COST'|translate}}:&nbsp;</div> <b> {{vm.personalEnergyConsumptionCost}}</b></div>
+                  <div layout="row" flex><div >{{'PERSON_HISTORY.COMMUNITY_AVERAGE_ENERGY_CONSUMPTION_COST'|translate}}:&nbsp;</div> <b> {{vm.communityEnergyConsumptionCost}}</b></div>
+                  <div layout="row" flex>
+                    <div >{{'PERSON_HISTORY.RANKING_IN_THE_COMMUNITY'|translate}}:&nbsp;</div>
+                    <b> {{vm.costRanking}}</b>
+                    <div style='margin-left: 10px' layout="column" layout-align="center" ><img ng-src="{{vm.costMedal}}" /></div>
+                  </div>
+                </div>
+
+              </div>
+
+              <div>
+                <table class="md-padding" align="right">
+                  <tr>
+                    <td><hr style="width:40px; height:3px; background-color:#9b59b6" /></td>
+                    <td><span>{{'PERSON_HISTORY.POWER_UPPER_LIMIT'|translate}}&nbsp;</span></td>
+                    <td><hr style="width:40px; height:3px; background-color:#009999" /></td>
+                    <td><span>{{'PERSON_HISTORY.EXTERNAL_POWER_PRICE'|translate}}&nbsp;</span></td>
+                    <td><hr style="width:40px; height:3px; background-color:#4E342E" /></td>
+                    <td><span>{{'PERSON_HISTORY.PERSONAL_POWER_CONSUMPTION'|translate}}&nbsp;</span></td>
+                  </tr>
+                </table>
+              </div>
+
+              <div flex clas="md-padding" id="lineChartContainerForDwellerHistory" style="height: 400px; margin-top: 30px" container-id ="lineChartContainerForDwellerHistory"  dual-yaxis-line-chart-for-dweller-history
+                   y1-label="{{'PERSON_HISTORY.POWER'|translate}}" y2-label="{{'PERSON_HISTORY.TARIFF'|translate}}" is-render-all="{{vm.isRenderAll}}" is-render-y1="{{vm.isRenderY1}}"
+                   power-upper-limit-label="{{'PERSON_HISTORY.POWER_UPPER_LIMIT'|translate}}" electricity-price-label="{{'PERSON_HISTORY.EXTERNAL_POWER_PRICE'|translate}}"
+                   power-limit-label="{{'PERSON_HISTORY.POWER_LIMIT'|translate}}" pv-feed-in-price-label="{{'PERSON_HISTORY.PV_FEED_IN_PRICE'|translate}}" chp-feed-in-price-label="{{'PERSON_HISTORY.CHP_FEED_IN_PRICE'|translate}}"
+                   energy-consumption-label="{{'PERSON_HISTORY.ENERGY_CONSUMPTION'|translate}}"
+                   power-lower-limit-label="{{'PERSON_HISTORY.POWER_LOWER_LIMIT'|translate}}" personal-energy-consumption-label="{{'PERSON_HISTORY.PERSONAL_POWER_CONSUMPTION'|translate}}"
+                   start-time-stamp="{{vm.startTimeStamp}}" end-time-stamp="{{vm.endTimeStamp}}" power-upper-limit-data="{{vm.powerUpperLimitData}}" electricity-price-data="{{vm.electricityPrices}}"
+                   energy-consumption-data="{{vm.personalEnergyConsumptionData}}" has-minus-yaxis="false">
+              </div>
+
+            </div>
+            </md-tab-content>
+          </md-tab>
+        </md-tabs>
+
+    </div>
+
+
+</div>
+
+
+</div>
+<script src="assets/lib/jquery.simpleWeather.js"></script>
+<script src="assets/lib/weather.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+<!--<script type="text/javascript">
+  $("#eshl-live").load(function() {
+    window.stage = new Kinetic.Stage({
+      container: 'container_floorPlan_One'
+    });
+    var initialScale = window.stage.scale(); //returns {x: 1, y: 1}
+  })
+</script>-->

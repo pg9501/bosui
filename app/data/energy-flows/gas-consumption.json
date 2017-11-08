@@ -1,0 +1,13 @@
+{
+  "data": {
+    "name": "Gas Consumption",
+    "id": "Gas Consumption",
+    "children": [
+
+      {"id":"CHP Otto-engine","name": "CHP Otto-engine", "value": 58,"inDeviceGroup":0,"type":"gCon","href": "assets/images/energy-flows/chp.png"},
+      {"id":"Radiator","name": "Radiator", "value": 50,"inDeviceGroup":0,"type":"gCon","href": "assets/images/energy-flows/Radiator.png"},
+      {"id":"Water Heater","name": "Water Heater", "value": 35,"inDeviceGroup":0,"type":"gCon","href": "assets/images/energy-flows/Shower.png"}
+
+    ]
+  }
+}

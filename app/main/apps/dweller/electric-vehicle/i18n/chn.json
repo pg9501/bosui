@@ -1,0 +1,31 @@
+{
+    "ELECTRIC_VEHICLE": {
+        "ELECTRIC_VEHICLE_NAV": "电动汽车",
+      "STATUS":"状态",
+      "CHARGING":"正在充电",
+      "POWER":"功率",
+      "PARKING_TIME":"停车时间",
+      "EXTERNAL_SIGNALS":"外部信号",
+      "CURRENT_ELECTRICITY_PRICE":"当前电价",
+      "CURRENT_LOAD_LIMIT":"当前负载限制",
+      "BATTERY_DETAILS":"电池详情",
+      "CURRENT_CAPACITY":"当前电量",
+      "FULL_CAPACITY":"总容量",
+      "CHARGING_PERCENT":"充电百分比",
+      "DISTANCE_TO_REACH":"到达距离",
+      "REMAINING_CHARGING_TIME":"剩余充电时间",
+      "NEXT_PLANNED_DRIVE":"下次旅程",
+      "DEPARTURE_DATE_TIME":"出发日期和时间",
+      "DEPARTURE_DATE_REQUIRED":"请填写出发日期",
+      "DATE_FORMAT_WRONG":"日期格式应该是 dd/mm/yyyy.",
+      "DEPARTURE_TIME_REQUIRED":"请填写出发时间",
+      "DEPARTURE_TIME_WRONG":"出发时间应该晚于当前时间",
+      "DISTANCE":"距离",
+      "DISTANCE_IS_REQUIRED":"请填写距离",
+      "INPUT_VALID_NUMBER":"请输入一个有效数字",
+      "MINIMUM_RANGE":"最小行驶距离",
+      "MINIMUM_RANGE_REQUIRED":"请填写最小行驶距离",
+      "START_CHARGING_NOW":"立即开始充电",
+      "SAVE":"保存"
+    }
+}

@@ -1,0 +1,17 @@
+{
+  "DEVICES_ADMIN": {
+    "DEVICES_NAV": "Devices",
+    "ALL_DEVICES": "All Devices",
+    "LOCATIONS": "Locations",
+    "LOCATION":"Location",
+    "SELECT_A_LOCATION":"Select A Location",
+    "SAVE":"Save",
+    "DETAILS":"Details",
+    "UNSIGNED_DEVICES":"Unassigned Devices",
+    "REMOVE_DEVICES":"Remove Devices",
+    "FLOOR":"Floor",
+    "ROOM":"Room",
+    "ASSIGN":"Assign"
+
+  }
+}

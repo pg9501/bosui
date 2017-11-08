@@ -1,0 +1,9 @@
+{
+  "data": {
+    "name": "Cold Generation",
+    "id": "Cold-Provided Devices",
+    "children": [
+      {"id":"AC","name": "Air Conditioner", "value": 8,"inDeviceGroup":0,"type":"cGen","href": "assets/images/energy-flows/AirConditioner.png"}
+    ]
+  }
+}
